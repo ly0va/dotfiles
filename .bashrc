@@ -33,4 +33,4 @@ stty -ixon
 PS1="\[\e[32m\]\u\[\e[m\]\[\e[32m\]@\[\e[m\]\[\e[32m\]\h\[\e[m\]:\[\e[34m\]\w\[\e[m\]\n\\$ "    
 
 # display system info and arch logo
-neofetch --color_blocks off
+# neofetch --color_blocks off

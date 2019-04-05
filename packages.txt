@@ -4,7 +4,7 @@ vim
 ranger
 htop
 neofetch
-compton
+compton // remember to uncomment vsync in compton.conf
 i3-gaps
 i3status
 dmenu
