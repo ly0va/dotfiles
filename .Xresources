@@ -38,7 +38,7 @@ URxvt.iso14755_52: false
 URxvt.keysym.Shift-Control-V: eval:paste_clipboard
 URxvt.keysym.Shift-Control-C: eval:selection_to_clipboard
 ! plugins
-URxvt.perl-ext-common: default,matcher
+URxvt.perl-ext-common: default,matcher,resize-font
 ! url launcher
 URxvt.url-launcher: /usr/bin/xdg-open
 URxvt.matcher.button: 1
