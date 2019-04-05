@@ -1,0 +1,6 @@
+.*history
+.viminfo
+.Xauthority
+.cache
+.local
+
