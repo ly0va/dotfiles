@@ -10,9 +10,10 @@ i3status
 dmenu
 rxvt-unicode
 noto-fonts
-i3blocks
 feh
 xorg-server
 xorg-xinit
 xf86-video-intel
 git
+scrot
+xclip
