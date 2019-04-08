@@ -72,7 +72,7 @@ bindsym $mod+Shift+Right move right
 # bindsym $mod+v split v
 
 # toggle split direction
-bindsym $mod+t split toggle
+bindsym $mod+s split toggle
 
 # enter fullscreen mode for the focused container
 bindsym $mod+f fullscreen toggle
@@ -83,10 +83,10 @@ bindsym $mod+f fullscreen toggle
 # bindsym $mod+e layout toggle split
 
 # toggle layout
-bindsym $mod+s layout toggle
+bindsym $mod+e layout toggle
 
 # toggle tiling / floating
-bindsym $mod+Shift+space floating toggle
+bindsym $mod+Tab floating toggle
 
 # change focus between tiling / floating windows
 # bindsym $mod+space focus mode_toggle
