@@ -17,3 +17,5 @@ xf86-video-intel
 git
 scrot
 xclip
+/etc/vconsole.conf:
+FONT=LatGrkCyr-8x16
