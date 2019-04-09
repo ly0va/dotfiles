@@ -1,0 +1,9 @@
+[time]
+command=date +%H:%m
+interval=60
+
+[battery]
+command=printf "%s %s " $(echo -e "\uf0e7") $(acpi | egrep -o "[0-9]+%")
+interval=30
+
+

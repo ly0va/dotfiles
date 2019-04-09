@@ -156,7 +156,8 @@ bindsym $mod+Ctrl+l exec --no-startup-id "i3-resize right"
 # finds out, if available)
 bar {
     position top    
-    status_command i3status
+    status_command i3blocks
+    font pango:FontAwesome 10
 }
 
 # ger rid of the title bar
