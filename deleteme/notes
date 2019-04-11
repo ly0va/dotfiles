@@ -1,0 +1,7 @@
+uncomment vsync in compton.conf
+systemctl enable NetworkManager
+install system fonts and console font
+install yay
+enable ntp
+set up a user
+edit /etc/sudoers

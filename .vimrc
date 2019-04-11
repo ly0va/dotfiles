@@ -24,3 +24,9 @@ nmap <c-s> :w<CR>
 imap <c-s> <c-o>:w<CR>
 vmap <c-s> <c-c>:w<CR>
 
+" reload apps when configs are edited
+autocmd BufWritePost ~/.Xresources !xrdb %
+autocmd BufWritePost ~/.config/i3/config !i3-msg reload
+autocmd BufWritePost ~/.config/i3blocks/config !i3-msg reload
+autocmd BufWritePost ~/.bash_profile !source %
+

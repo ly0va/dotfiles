@@ -1,0 +1,24 @@
+#!/usr/bin/env bash
+i3lock -t -i .wallpaper --clock \
+       --timepos='x+110:y+45' \
+       --datepos='x+45:y+70' \
+       --indpos='x+260:y+45' \
+       --datestr 'Type password to unlock...' \
+       --date-align 1 \
+       --insidecolor=00000000 \
+       --ringcolor=ffffffff \
+       --keyhlcolor=4242f4ff \
+       --bshlcolor=4242f4ff \
+       --separatorcolor=00000000 \
+       --insidevercolor=00000000 \
+       --insidewrongcolor=f44242ff \
+       --timecolor=ffffffff \
+       --datecolor=ffffffff \
+       --ringvercolor=ffffffff \
+       --ringwrongcolor=ffffffff \
+       --verifcolor=ffffffff \
+       --line-uses-inside \
+       --radius=20 --ring-width=7 \
+       --veriftext='' --wrongtext='' --noinputtext='' \
+       --indicator
+

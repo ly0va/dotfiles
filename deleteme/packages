@@ -10,13 +10,15 @@ i3blocks
 dmenu
 rxvt-unicode
 feh
-UbuntuMono Nerd Font Mono.ttf
 xorg-server
 xorg-xinit
 xf86-video-intel
 git
 scrot
 xclip
-/etc/vconsole.conf:
-FONT=LatGrkCyr-8x16
 xorg-xrandr
+acpi
+networkmanager // remember to systemctl enable it
+grub
+*yay
+*i3lock-color
