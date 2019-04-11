@@ -9,8 +9,8 @@ i3-gaps
 i3blocks
 dmenu
 rxvt-unicode
-noto-fonts, otf-font-awesome
 feh
+UbuntuMono Nerd Font Mono.ttf
 xorg-server
 xorg-xinit
 xf86-video-intel
@@ -19,3 +19,4 @@ scrot
 xclip
 /etc/vconsole.conf:
 FONT=LatGrkCyr-8x16
+xorg-xrandr

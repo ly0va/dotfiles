@@ -1,9 +1,25 @@
 [time]
-command=date +%H:%m
+command=date +%H:%M
 interval=60
+label=
+
+[date]
+command=date "+%b %d"
+interval=60
+label=
+
+[keyboard]
+command=kb-layout print %s
+interval=once
+label=
+signal=1
 
 [battery]
-command=printf "%s %s " $(echo -e "\uf0e7") $(acpi | egrep -o "[0-9]+%")
+command=echo $(acpi | egrep -o "[0-9]+%")
 interval=30
+label=
 
-
+[memory]
+command=free -h | awk '/^Mem/ {printf "%d%%",100*$3/$2}'
+interval=5
+label=
