@@ -1,0 +1,30 @@
+#!/usr/bin/env bash
+
+user=$1
+
+echo Adding a user $user...
+useradd -m -g wheel "$user"
+
+echo Setting up a password...
+passwd "$user"
+
+echo Editing /etc/sudoers...
+echo -e "root ALL=(ALL) ALL\n%wheel ALL=(ALL) ALL\n#includedir /etc/sudoers.d"
+
+# have to curl PACKAGES here...
+echo Installing packages...
+cat PACKAGES | xargs pacman --noconfirm -S
+
+echo Cloning rice repo...
+git clone https://github,com/lyova-potyomkin/arch-rice.git "/home/$user"
+
+cd "/home/$user"
+rm -rf .git .gitignore
+
+# do the fonts thing
+echo Installing fonts...
+mkdir -p /usr/share/fonts/TTF
+mv *.ttf /usr/share/fonst/TTF
+echo "FONT=LatGrkCyr-8x16" >> /etc/vconsole.conf
+
+
