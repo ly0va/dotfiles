@@ -8,3 +8,4 @@ TODO
 bar
 .lesshst
 __pycache__
+*.o
