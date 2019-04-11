@@ -139,13 +139,24 @@ bindsym $mod+Shift+r restart
 
 # system mode
 set $system [L]ock [E]xit [P]oweroff [S]uspend [R]eboot
-bindsym $mod+e mode "$system"
+bindsym $mod+grave mode "$system"
 mode "$system" {
     bindsym l mode "default"; exec my-lock
     bindsym e exec i3-msg exit
     bindsym p exec systemctl poweroff
     bindsym s mode "default"; exec my-lock && systemctl suspend
     bindsym r exec systemctl reboot
+    bindsym Return mode "default"
+    bindsym Escape mode "default"
+}
+
+set $gaps Gaps: [=]default [+]more [-]less [0]nones
+bindsym $mod+g mode "$gaps"
+mode "$gaps" {
+    bindsym equal gaps inner all set 10
+    bindsym 0 gaps inner all set 0
+    bindsym minus gaps inner all minus 5
+    bindsym Shift+equal gaps inner all plus 5
     bindsym Return mode "default"
     bindsym Escape mode "default"
 }
