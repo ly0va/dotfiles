@@ -23,3 +23,8 @@ label=
 command=free -h | awk '/^Mem/ {printf "%d%%",100*$3/$2}'
 interval=5
 label=
+
+[cpu]
+command=neofetch cpu_usage | cut -d' ' -f2
+interval=5
+label=

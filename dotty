@@ -1,5 +1,5 @@
 #!/usr/bin/env bash
-
+[[ -z $1 ]] && exit 1
 user=$1
 
 echo Adding a user $user...
