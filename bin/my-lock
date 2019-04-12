@@ -1,5 +1,5 @@
 #!/usr/bin/env bash
-i3lock -t -i .wallpaper --clock \
+i3lock -i .wallpaper --clock \
        --timepos='x+110:y+45' \
        --datepos='x+45:y+70' \
        --indpos='x+260:y+45' \

@@ -1,9 +1,8 @@
 .*history
-.viminfo
+.*info
 .Xauthority
 .cache
 .local
-
 TODO
 bar
 .lesshst

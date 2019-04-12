@@ -4,7 +4,7 @@ vim
 ranger
 htop
 neofetch
-compton // remember to uncomment vsync in compton.conf
+compton
 i3-gaps
 i3blocks
 dmenu
@@ -18,7 +18,8 @@ scrot
 xclip
 xorg-xrandr
 acpi
-networkmanager // remember to systemctl enable it
+networkmanager
 grub
 *yay
 *i3lock-color
+*sc-im
