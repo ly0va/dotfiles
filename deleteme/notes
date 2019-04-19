@@ -1,9 +1,0 @@
-uncomment vsync in compton.conf
-comment out xrandr setting resolution
-systemctl enable NetworkManager
-install system fonts and console font
-install yay
-enable ntp
-enable colors in pacman
-set up a user
-edit /etc/sudoers

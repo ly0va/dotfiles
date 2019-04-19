@@ -1,5 +1,5 @@
 [options]
-#allow_bold = true
+allow_bold = false
 #audible_bell = false
 #bold_is_bright = true
 #clickable_url = true
@@ -21,7 +21,7 @@ scrollback_lines = 10000
 #browser = xdg-open
 
 # "system", "on" or "off"
-#cursor_blink = system
+cursor_blink = off
 
 # "block", "underline" or "ibeam"
 #cursor_shape = block
@@ -43,13 +43,6 @@ scrollback_lines = 10000
 # and cursor_foreground falls back to the background color.
 #cursor = #dcdccc
 #cursor_foreground = #dcdccc
-
-#foreground = #dcdccc
-#foreground_bold = #ffffff
-#background = #3f3f3f
-
-# 20% background transparency (requires a compositor)
-#background = rgba(63, 63, 63, 0.8)
 
 # If unset, will reverse foreground and background
 highlight = #2f2f2f
