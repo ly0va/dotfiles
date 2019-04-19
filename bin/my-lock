@@ -1,7 +1,7 @@
 #!/usr/bin/env bash
 i3lock -i .wallpaper --clock \
        --timepos='x+110:y+45' \
-       --datepos='x+45:y+70' \
+       --datepos='x+35:y+70' \
        --indpos='x+260:y+45' \
        --datestr 'Type password to unlock...' \
        --date-align 1 \

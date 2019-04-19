@@ -1,3 +1,6 @@
+* = aur
+** = pypi
+
 base
 base-devel
 vim
@@ -25,9 +28,6 @@ grub
 *sc-im
 **ueberzug
 python-pip
-
-__
-* = aur
-** = pypi
 w3m
 **pywal
+bat
