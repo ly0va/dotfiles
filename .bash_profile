@@ -8,7 +8,7 @@
 export EDITOR=vim
 export PAGER=less
 export BROWSER=firefox
-export TERMINAL=urxvt
+export TERMINAL=termite
 
 # adding my scripts folder to PATH
 export PATH="$PATH:$HOME/bin"
