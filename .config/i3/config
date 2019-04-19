@@ -198,13 +198,5 @@ bindsym Print exec --no-startup-id scrot ~/pics/scrot-$(date +%s).png -e "xclip 
 # send signal to i3blocks that layout has changed
 bindsym $mod+space exec --no-startup-id kb-layout set +1 && pkill -SIGRTMIN+1 i3blocks
 
-# keyboard settings
-exec --no-startup-id setxkbmap -layout us,ru -option caps:escape
-# load .Xresources
-exec --no-startup-id xrdb -merge ~/.Xresources
-# run compton
-exec --no-startup-id compton -b
-# set screen resolution
-exec --no-startup-id xrandr --output Virtual-1 --mode 1360x768
-# set the background
-exec --no-startup-id feh --bg-scale --no-fehbg ~/.wallpaper
+# run startup script
+exec --no-startup-id startup

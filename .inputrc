@@ -1,0 +1,5 @@
+TAB: menu-complete
+set colored-stats on
+set show-all-if-ambiguous on
+set completion-ignore-case
+

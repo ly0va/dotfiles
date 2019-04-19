@@ -1,0 +1,9 @@
+#!/usr/bin/env bash
+
+# keyboard settings: US & RU layouts; map CapsLock to Escape
+setxkbmap -layout us,ru -option caps:escape
+# start my compositor
+compton -b
+# set the wallpaper
+feh --bg-scale --no-fehbg ~/.wallpaper
+
