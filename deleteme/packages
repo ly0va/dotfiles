@@ -31,3 +31,6 @@ python-pip
 w3m
 **pywal
 bat
+dunst
+libnotify
+cronie

@@ -6,4 +6,5 @@ setxkbmap -layout us,ru -option caps:escape
 compton -b
 # set the wallpaper
 feh --bg-scale --no-fehbg ~/.wallpaper
-
+# start notification daemon
+dunst &
