@@ -16,7 +16,7 @@ label=
 signal=1
 
 [battery]
-command=acpi | egrep -o "[0-9]+%"
+command=battery-watcher
 interval=30
 label=
 

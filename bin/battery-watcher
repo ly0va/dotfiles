@@ -1,0 +1,15 @@
+#!/usr/bin/env bash
+
+level=$(acpi | egrep -o "[0-9]+%")
+level=${level%?}
+printf "%d%%\n" $level
+
+if [ $level -le 10 ]; then
+    if [ ! -f /tmp/battery-low ]; then
+        touch /tmp/battery-low
+        notify-send -u critical "Battery running low: $level%"
+    fi
+elif [ -f /tmp/battery-low ]; then
+    rm /tmp/battery-low
+fi
+

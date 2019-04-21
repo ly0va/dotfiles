@@ -10,6 +10,8 @@ alias ls='ls --color=auto'
 alias grep='grep --color=auto'
 alias fgrep='fgrep --color=auto'
 alias egrep='egrep --color=auto'
+alias fvim='vim $(fzf)'
+alias fcd='cd $(fzf)'
 
 # ignore duplicate lines and lines starting with space
 HISTCONTROL=ignoreboth
@@ -32,5 +34,5 @@ stty -ixon
 # set a pretty prompt
 PS1="\[\e[32m\]\u@\h\[\e[m\]:\[\e[34m\]\w\[\e[m\]\n\\$ "    
 
-# display system info and arch logo
-# neofetch --color_blocks off
+# now fzf includes hidden files
+export FZF_DEFAULT_COMMAND='ag --hidden --ignore .git -g ""'
