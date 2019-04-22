@@ -40,7 +40,8 @@ source /usr/share/fzf/completion.bash
 export FZF_DEFAULT_COMMAND='ag --hidden --ignore .git -g ""'
 export FZF_CTRL_T_COMMAND='ag --hidden --ignore .git -g ""'
 export FZF_ALT_C_COMMAND='ag --hidden -g "" --ignore .git | xargs dirname | sort | uniq'
-export FZF_DEFAULT_OPTS='--height 40% --reverse'
+export FZF_DEFAULT_OPTS='--multi --height 50% --reverse --preview "bat --color=always --style=plain {}"
+                         --color hl:10,hl+:10,pointer:10,marker:10'
 bind -x '"\ef": "fzf-file-widget"'
 bind "$(bind -s | grep history | sed 's/\\C-r/\\ed/')"
 bind -r "\C-r"
