@@ -10,8 +10,6 @@ alias ls='ls --color=auto'
 alias grep='grep --color=auto'
 alias fgrep='fgrep --color=auto'
 alias egrep='egrep --color=auto'
-alias fvim='vim $(fzf)'
-alias fcd='cd $(fzf)'
 
 # ignore duplicate lines and lines starting with space
 HISTCONTROL=ignoreboth
@@ -34,5 +32,15 @@ stty -ixon
 # set a pretty prompt
 PS1="\[\e[32m\]\u@\h\[\e[m\]:\[\e[34m\]\w\[\e[m\]\n\\$ "    
 
-# now fzf includes hidden files
+# keybindings and tab-completion for fzf
+source /usr/share/fzf/key-bindings.bash
+source /usr/share/fzf/completion.bash
+
+# some sane fzf settings
 export FZF_DEFAULT_COMMAND='ag --hidden --ignore .git -g ""'
+export FZF_CTRL_T_COMMAND='ag --hidden --ignore .git -g ""'
+export FZF_ALT_C_COMMAND='ag --hidden -g "" --ignore .git | xargs dirname | sort | uniq'
+export FZF_DEFAULT_OPTS='--height 40% --reverse'
+bind -x '"\ef": "fzf-file-widget"'
+bind "$(bind -s | grep history | sed 's/\\C-r/\\ed/')"
+bind -r "\C-r"

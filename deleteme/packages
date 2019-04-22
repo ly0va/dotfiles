@@ -34,3 +34,5 @@ bat
 dunst
 libnotify
 cronie
+fzf
+the_silver_searcher
