@@ -26,6 +26,15 @@ nmap <c-s> :w<CR>
 imap <c-s> <c-o>:w<CR>
 vmap <c-s> <c-c>:w<CR>
 
+" man Ctrl-O to open file in new tab
+nmap <c-o> :tabnew
+
 " reload apps when configs are edited - consider switching to entr
 autocmd BufWritePost ~/.config/i3/config !i3-msg reload
 autocmd BufWritePost ~/.config/i3blocks/config !i3-msg reload
+
+" tabline custom colors
+hi TabLine     ctermfg=254 ctermbg=238 cterm=none
+hi TabLineSel  ctermfg=231 ctermbg=235 cterm=bold
+hi TabLineFill ctermfg=254 ctermbg=238 cterm=none
+

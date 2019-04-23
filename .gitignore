@@ -1,11 +1,8 @@
 .*history
-.*info
+.netrwhist
 .Xauthority
 .cache
 .local
-TODO
-bar
 .lesshst
 __pycache__
 *.o
-.wget*
