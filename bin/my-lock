@@ -1,6 +1,9 @@
 #!/usr/bin/env bash
+# if the first argument is empty, i3lock will fork (allowing suspend)
+# if you want to pause dunst instead, pass -n or --nofork as first parameter
 convert .wallpaper -resize $(xrandr | head -1 | awk '{printf "%dx%d",$8,$10}')\! /tmp/wallpaper
-i3lock -i /tmp/wallpaper --clock \
+killall -SIGUSR1 dunst # pause dunst
+i3lock -i /tmp/wallpaper --clock "$1" \
        --timepos='x+110:y+45' \
        --datepos='x+35:y+70' \
        --indpos='x+260:y+45' \
@@ -22,4 +25,4 @@ i3lock -i /tmp/wallpaper --clock \
        --radius=20 --ring-width=7 \
        --veriftext='' --wrongtext='' --noinputtext='' \
        --indicator
-
+killall -SIGUSR2 dunst # resume dunst

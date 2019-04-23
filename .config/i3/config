@@ -141,7 +141,7 @@ bindsym $mod+Shift+r restart
 set $system [L]ock [E]xit [P]oweroff [S]uspend [R]eboot
 bindsym $mod+grave mode "$system"
 mode "$system" {
-    bindsym l mode "default"; exec --no-startup-id my-lock
+    bindsym l mode "default"; exec --no-startup-id my-lock --nofork
     bindsym e exec i3-msg exit
     bindsym p exec systemctl poweroff
     bindsym s mode "default"; exec --no-startup-id my-lock && systemctl suspend
