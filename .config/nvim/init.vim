@@ -8,7 +8,8 @@ set wildmenu                 " command mode autocomplete
 set encoding=utf-8           " unicode!!
 set showcmd                  " show the part of the command being typed
 set laststatus=0             " for nvim: hide status line
-syntax on                    " highlighting
+set nohlsearch               " don't highlight search results
+syntax on                    " highlight syntax
 
 " indenting
 filetype plugin indent on

@@ -3,7 +3,7 @@
 
 base
 base-devel
-vim
+neovim
 ranger
 htop
 neofetch
@@ -36,3 +36,4 @@ libnotify
 cronie
 fzf
 the_silver_searcher
+**pythonpy
