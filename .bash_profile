@@ -5,7 +5,7 @@
 [[ -f ~/.bashrc ]] && . ~/.bashrc
 
 # default apps
-export EDITOR=vim
+export EDITOR=nvim
 export PAGER=less
 export BROWSER=firefox
 export TERMINAL=termite

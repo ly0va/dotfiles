@@ -7,6 +7,7 @@ set mouse=a                  " mouse support
 set wildmenu                 " command mode autocomplete
 set encoding=utf-8           " unicode!!
 set showcmd                  " show the part of the command being typed
+set laststatus=0             " for nvim: hide status line
 syntax on                    " highlighting
 
 " indenting
