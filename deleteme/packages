@@ -1,10 +1,7 @@
-* = aur
-** = pypi
-
 base
 base-devel
 neovim
-ranger
+[aur]ranger-git
 htop
 neofetch
 compton
@@ -23,18 +20,21 @@ xorg-xrandr
 acpi
 networkmanager
 grub
-*yay
-*i3lock-color
-*sc-im
-**ueberzug
+[github]yay
+[aur]i3lock-color
+[pypi]ueberzug
 python-pip
 w3m
-**pywal
+[pypi]pywal
 bat
 dunst
 libnotify
 cronie
 fzf
-the_silver_searcher
-**pythonpy
+the_silver_searcher // consider ripgrep
+[pypi]pythonpy
 xautolock
+arc-gtk-theme arc-icon-theme
+firefox
+code
+
