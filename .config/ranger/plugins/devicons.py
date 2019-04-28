@@ -102,7 +102,7 @@ file_node_extensions = {
 dir_node_exact_matches = {
     '.git'                             : '',
     'docs'                             : '',
-    'd-loads'                          : '',
+    'downloads'                        : '',
     'music'                            : '',
     'pics'                             : '',
     'vids'                             : '',

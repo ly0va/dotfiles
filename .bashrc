@@ -15,8 +15,8 @@ alias vim='nvim'
 # ignore duplicate lines and lines starting with space
 HISTCONTROL=ignoreboth
 # set history size
-HISTSIZE=1000
-HISTFILESIZE=1000
+HISTSIZE=
+HISTFILESIZE=
 
 # append to the history file, not overwrite
 shopt -s histappend
