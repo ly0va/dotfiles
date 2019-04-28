@@ -199,6 +199,8 @@ bindsym Print exec --no-startup-id scrot ~/pics/scrot-$(date +%s).png -e "xclip 
 bindsym $mod+space exec --no-startup-id kb-layout set +1 && pkill -SIGRTMIN+1 i3blocks
 
 bindsym $mod+r exec $TERMINAL -e ranger
+bindsym $mod+b exec $BROWSER
+bindsym $mod+m exec telegram-desktop
 
 # run startup script
 exec --no-startup-id startup

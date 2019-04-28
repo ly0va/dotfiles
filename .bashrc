@@ -11,6 +11,7 @@ alias grep='grep --color=auto'
 alias fgrep='fgrep --color=auto'
 alias egrep='egrep --color=auto'
 alias vim='nvim'
+alias dots='/usr/bin/git --git-dir=$HOME/dotfiles/ --work-tree=$HOME'
 
 # ignore duplicate lines and lines starting with space
 HISTCONTROL=ignoreboth
