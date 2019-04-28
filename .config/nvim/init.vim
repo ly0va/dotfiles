@@ -32,7 +32,7 @@ nmap <c-o> :tabnew
 
 " reload apps when configs are edited - consider switching to entr
 autocmd BufWritePost ~/.config/i3/config !i3-msg reload
-autocmd BufWritePost ~/.config/i3blocks/config !i3-msg reload
+autocmd BufWritePost ~/.config/i3blocks/config !i3-msg restart
 
 " tabline custom colors
 hi TabLine     ctermfg=254 ctermbg=238 cterm=none
