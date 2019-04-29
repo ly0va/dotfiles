@@ -188,10 +188,14 @@ smart_gaps on
 smart_borders on
 
 # moving to adjacent workspaces
-bindsym $mod+Prior exec --no-startup-id i3-workspace go prev
-bindsym $mod+Next exec --no-startup-id i3-workspace go next
-bindsym $mod+Shift+Prior exec --no-startup-id i3-workspace move prev
-bindsym $mod+Shift+Next exec --no-startup-id i3-workspace move next
+# bindsym $mod+Prior exec --no-startup-id i3-workspace go prev
+# bindsym $mod+Next exec --no-startup-id i3-workspace go next
+# bindsym $mod+Shift+Prior exec --no-startup-id i3-workspace move prev
+# bindsym $mod+Shift+Next exec --no-startup-id i3-workspace move next
+bindsym $mod+Prior workspace prev
+bindsym $mod+Next workspace next
+bindsym $mod+Shift+Prior move workspace prev; workspace prev
+bindsym $mod+Shift+Next move workspace next; workspace next
 
 # take a screenshot, save it to ~/pics and copy it to clipboard
 bindsym Print exec --no-startup-id scrot ~/pics/scrot/$(date +%s).png -e "xclip -sel clip -t image/png < $f"
@@ -200,13 +204,23 @@ bindsym $mod+space exec --no-startup-id kb-layout set +1 && pkill -SIGRTMIN+1 i3
 
 # frequently used apps
 bindsym $mod+r exec $TERMINAL -e ranger
-bindsym $mod+b exec $BROWSER
-bindsym $mod+m exec telegram-desktop
+bindsym $mod+b exec $BROWSER; workspace $ws2
+bindsym $mod+m exec telegram-desktop; workspace $ws3
+bindsym $mod+v exec code; workspace $ws4
+# and their dedicated workspaces
+assign [class="Firefox"] $ws2
+assign [class="Telegram"] $ws3
+assign [class="code-oss"] $ws4
+assign [class="Typora"] $ws5
+assign [class="Thunderbird"] $ws6
 
 # audio
-bindsym XF86AudioRaiseVolume exec --no-startup-id amixer -D pulse set Master 1%+ unmute && pkill -SIGRTMIN+2 i3blocks
-bindsym XF86AudioLowerVolume exec --no-startup-id amixer -D pulse set Master 1%- unmute && pkill -SIGRTMIN+2 i3blocks
+bindsym XF86AudioRaiseVolume exec --no-startup-id amixer -D pulse set Master 3%+ unmute && pkill -SIGRTMIN+2 i3blocks
+bindsym XF86AudioLowerVolume exec --no-startup-id amixer -D pulse set Master 3%- unmute && pkill -SIGRTMIN+2 i3blocks
 bindsym XF86AudioMute exec --no-startup-id amixer -D pulse set Master toggle && pkill -SIGRTMIN+2 i3blocks
 
 # run startup script
 exec --no-startup-id startup
+# run scratchpad terminal with tmux
+exec --no-startup-id $TERMINAL -e "tmux new" -t tmux
+for_window [title="tmux"] move scratchpad
