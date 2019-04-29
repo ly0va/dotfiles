@@ -33,3 +33,15 @@ label=
 [wifi]
 command=network
 interval=5
+
+[pacman]
+command=pacman -Qu | wc -l
+label=
+interval=1800
+
+[volume]
+command=volume
+label=墳
+interval=once
+signal=2
+

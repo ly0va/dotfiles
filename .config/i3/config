@@ -194,13 +194,19 @@ bindsym $mod+Shift+Prior exec --no-startup-id i3-workspace move prev
 bindsym $mod+Shift+Next exec --no-startup-id i3-workspace move next
 
 # take a screenshot, save it to ~/pics and copy it to clipboard
-bindsym Print exec --no-startup-id scrot ~/pics/scrot-$(date +%s).png -e "xclip -sel clip -t image/png < $f"
+bindsym Print exec --no-startup-id scrot ~/pics/scrot/$(date +%s).png -e "xclip -sel clip -t image/png < $f"
 # send signal to i3blocks that layout has changed
 bindsym $mod+space exec --no-startup-id kb-layout set +1 && pkill -SIGRTMIN+1 i3blocks
 
+# frequently used apps
 bindsym $mod+r exec $TERMINAL -e ranger
 bindsym $mod+b exec $BROWSER
 bindsym $mod+m exec telegram-desktop
+
+# audio
+bindsym XF86AudioRaiseVolume exec --no-startup-id amixer -D pulse set Master 1%+ unmute && pkill -SIGRTMIN+2 i3blocks
+bindsym XF86AudioLowerVolume exec --no-startup-id amixer -D pulse set Master 1%- unmute && pkill -SIGRTMIN+2 i3blocks
+bindsym XF86AudioMute exec --no-startup-id amixer -D pulse set Master toggle && pkill -SIGRTMIN+2 i3blocks
 
 # run startup script
 exec --no-startup-id startup
