@@ -98,15 +98,15 @@ bindsym $mod+c focus child
 
 # Define names for default workspaces for which we configure key bindings later on.
 # We use variables to avoid repeating the names in multiple places.
-set $ws1 "1"
-set $ws2 "2"
-set $ws3 "3"
-set $ws4 "4"
-set $ws5 "5"
-set $ws6 "6"
-set $ws7 "7"
-set $ws8 "8"
-set $ws9 "9"
+set_from_resource $ws1 i3wm.ws1 "1"
+set_from_resource $ws2 i3wm.ws2 "2"
+set_from_resource $ws3 i3wm.ws3 "3"
+set_from_resource $ws4 i3wm.ws4 "4"
+set_from_resource $ws5 i3wm.ws5 "5"
+set_from_resource $ws6 i3wm.ws6 "6"
+set_from_resource $ws7 i3wm.ws7 "7"
+set_from_resource $ws8 i3wm.ws8 "8"
+set_from_resource $ws9 i3wm.ws9 "9"
 
 # switch to workspace
 bindsym $mod+1 workspace $ws1

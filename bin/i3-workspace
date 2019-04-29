@@ -2,12 +2,19 @@
 
 '''USAGE: i3-controller.py move|go prev|next'''
 
-import subprocess
+import subprocess as subp
 import sys
 import json
 
+labels = []
+
+def get_labels():
+    handle = subp.Popen(["grep", "-o", '[0-9]: [^"]', "/home/redboot/.Xresources"], stdout=subp.PIPE)
+    output = handle.communicate()[0].decode().splitlines()
+    return output
+
 def get_workspace():
-    handle = subprocess.Popen(["i3-msg","-t","get_workspaces"], stdout=subprocess.PIPE)
+    handle = subp.Popen(["i3-msg","-t","get_workspaces"], stdout=subp.PIPE)
     output = handle.communicate()[0]
     data = json.loads(output.decode())
     for ws in data:
@@ -15,10 +22,12 @@ def get_workspace():
             return ws['num']
 
 def move_to(num):
-    subprocess.Popen(["i3-msg","move container to workspace "+str(num)], stdout=subprocess.PIPE)
+    label = labels[num-1]
+    subp.Popen(["i3-msg","move container to workspace "+label], stdout=subp.PIPE)
 
 def go_to(num):
-    subprocess.Popen(["i3-msg","workspace "+str(num)], stdout=subprocess.PIPE)
+    label = labels[num-1]
+    subp.Popen(["i3-msg","workspace "+label], stdout=subp.PIPE)
 
 
 if __name__ == '__main__':
@@ -36,6 +45,7 @@ if __name__ == '__main__':
            exit(1)
     
     current = get_workspace()
+    labels = get_labels()
 
     if where == 'next':
         to = current % 9 + 1

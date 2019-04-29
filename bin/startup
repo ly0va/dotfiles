@@ -1,5 +1,7 @@
 #!/usr/bin/env bash
 
+# load Xresources
+xrdb ~/.Xresources
 # keyboard settings: US & RU layouts; map CapsLock to Escape
 setxkbmap -layout us,ru -option caps:escape
 # start my compositor
