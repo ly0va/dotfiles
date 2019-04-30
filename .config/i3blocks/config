@@ -34,10 +34,16 @@ label=
 command=network
 interval=5
 
-[pacman]
-command=pacman -Qu | wc -l
-label=
-interval=1800
+# [pacman]
+# command=pacman -Qu | wc -l
+# label=
+# interval=1800
+
+[brightness]
+command=echo $(xbacklight -get)%
+interval=once
+signal=3
+label=
 
 [volume]
 command=volume
