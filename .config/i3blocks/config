@@ -18,7 +18,6 @@ signal=1
 [battery]
 command=battery-watcher
 interval=30
-label=
 
 # [memory]
 # command=free | awk '/^Mem/ {printf "%d%%",100*$3/$2}'
@@ -47,7 +46,6 @@ label=
 
 [volume]
 command=volume
-label=墳
 interval=once
 signal=2
 

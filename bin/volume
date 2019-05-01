@@ -1,10 +1,10 @@
 #!/usr/bin/env sh
 
-INFO=$(amixer -D pulse get Master)
+info=$(amixer -D pulse get Master)
 
-if [ ! -z "$(echo $INFO | grep '\[off\]')" ]; then
-    echo "mute"
+if [ ! -z "$(echo $info | grep '\[off\]')" ]; then
+    echo "ﱝ mute"
 else
-    echo $INFO | egrep -o '[0-9]+%' | head -1
+    echo "墳" $(echo $info | egrep -o '[0-9]+%' | head -1)
 fi
 
