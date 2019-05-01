@@ -177,6 +177,13 @@ bindsym $mod+Ctrl+l exec --no-startup-id i3-resize right
 bar {
     position top    
     status_command i3blocks
+    colors {
+        focused_workspace  #000000 #000000 #0099FF
+        active_workspace   #000000 #000000 #FFFFFF
+        inactive_workspace #000000 #000000 #888888
+        urgent_workspace   #000000 #000000 #FF2A2A
+        binding_mode       #000000 #000000 #FF2A2A
+    }
 }
 
 # ger rid of the title bar
@@ -188,10 +195,10 @@ smart_gaps on
 smart_borders on
 
 # moving to adjacent workspaces
-# bindsym $mod+Prior exec --no-startup-id i3-workspace go prev
-# bindsym $mod+Next exec --no-startup-id i3-workspace go next
-# bindsym $mod+Shift+Prior exec --no-startup-id i3-workspace move prev
-# bindsym $mod+Shift+Next exec --no-startup-id i3-workspace move next
+bindsym $mod+Mod1+Prior exec --no-startup-id i3-workspace go prev
+bindsym $mod+Mod1+Next exec --no-startup-id i3-workspace go next
+bindsym $mod+Mod1+Shift+Prior exec --no-startup-id i3-workspace move prev
+bindsym $mod+Mod1+Shift+Next exec --no-startup-id i3-workspace move next
 bindsym $mod+Prior workspace prev
 bindsym $mod+Next workspace next
 bindsym $mod+Shift+Prior move workspace prev; workspace prev
@@ -226,5 +233,8 @@ bindsym XF86MonBrightnessDown exec --no-startup-id sudo xbacklight -10 && pkill 
 # run startup script
 exec --no-startup-id startup
 # run scratchpad terminal with tmux
-exec --no-startup-id $TERMINAL -e "tmux new" -t tmux
+exec --no-startup-id $TERMINAL -e "tmux -f ~/.config/tmux.conf new" -t tmux
 for_window [title="tmux"] move scratchpad
+
+# temporary
+for_window [class="electron"] floating enable
