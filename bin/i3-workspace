@@ -1,59 +1,28 @@
-#!/usr/bin/env python3
+#!/usr/bin/env bash
 
-'''USAGE: i3-controller.py move|go prev|next'''
+USAGE="USAGE: i3-workspace move|go prev|next"
 
-import subprocess as subp
-import sys
-import json
+what=$1
+where=$2
 
-labels = []
+if [[ -z $2 ]] || [[ ! $what =~ move|go ]] || [[ ! $where =~ next|prev ]]; then
+    echo $USAGE
+    exit 1
+fi
 
-def get_labels():
-    handle = subp.Popen(["grep", "-o", '[0-9]: [^"]', "/home/redboot/.Xresources"], stdout=subp.PIPE)
-    output = handle.communicate()[0].decode().splitlines()
-    return output
+labels=$(grep -o '[0-9]: [^"]' ~/.Xresources)
+current=$(i3-msg -t get_workspaces | python -m json.tool | grep -B 3 '"focused": true' | head -1 | grep -o '[0-9]')
 
-def get_workspace():
-    handle = subp.Popen(["i3-msg","-t","get_workspaces"], stdout=subp.PIPE)
-    output = handle.communicate()[0]
-    data = json.loads(output.decode())
-    for ws in data:
-        if ws['focused']:
-            return ws['num']
+if [[ $where == next ]]; then
+    to=$(( $current % 9 +1 ))
+elif [[ $where == prev ]]; then
+    to=$(( ($current + 7) % 9 + 1 ))
+fi
 
-def move_to(num):
-    label = labels[num-1]
-    subp.Popen(["i3-msg","move container to workspace "+label], stdout=subp.PIPE)
+name=$(sed -n ${to}p <<< "$labels")
 
-def go_to(num):
-    label = labels[num-1]
-    subp.Popen(["i3-msg","workspace "+label], stdout=subp.PIPE)
+if [[ $what == move ]]; then
+    i3-msg move container to workspace $name
+fi
 
-
-if __name__ == '__main__':
-
-    if len(sys.argv) < 3:
-        print(__doc__)
-        exit(1)
-
-    what = sys.argv[1]
-    where = sys.argv[2]
-
-    if what not in ['move', 'go'] or \
-       where not in ['next', 'prev']:
-           print(__doc__)
-           exit(1)
-    
-    current = get_workspace()
-    labels = get_labels()
-
-    if where == 'next':
-        to = current % 9 + 1
-    elif where == 'prev':
-        to = (current + 7) % 9 + 1
-
-    if what == 'move':
-        move_to(to)
-    go_to(to)
-
-
+i3-msg workspace $name

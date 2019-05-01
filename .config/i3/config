@@ -240,7 +240,7 @@ bindsym XF86MonBrightnessDown exec --no-startup-id sudo xbacklight -10 && pkill 
 # run startup script
 exec --no-startup-id startup
 # run scratchpad terminal with tmux
-exec --no-startup-id $TERMINAL -e "tmux -f ~/.config/tmux.conf new" -t tmux
+exec --no-startup-id $TERMINAL -e "tmux -f /home/redboot/.config/tmux.conf new" -t tmux
 for_window [title="tmux"] move scratchpad
 
 # temporary
