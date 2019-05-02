@@ -212,7 +212,7 @@ bindsym $mod+Shift+Prior move workspace prev; workspace prev
 bindsym $mod+Shift+Next move workspace next; workspace next
 
 # take a screenshot, save it to ~/pics and copy it to clipboard
-bindsym Print exec --no-startup-id scrot ~/pics/scrot/$(date +%s).png -e "xclip -sel clip -t image/png < $f"
+bindsym Print exec --no-startup-id scrot -z ~/pics/scrot/$(date +%s).png -e 'xclip -sel clip -t image/png < $f'
 # send signal to i3blocks that layout has changed
 bindsym $mod+space exec --no-startup-id kb-layout set +1 && pkill -SIGRTMIN+1 i3blocks
 
@@ -239,6 +239,11 @@ bindsym XF86MonBrightnessDown exec --no-startup-id sudo xbacklight -10 && pkill 
 
 # run startup script
 exec --no-startup-id startup
+
+# tmux-like bindings
+bindsym $mod+backslash split vertical; exec $TERMINAL
+bindsym $mod+Shift+backslash split horizontal; exec $TERMINAL
+
 # run scratchpad terminal with tmux
 exec --no-startup-id $TERMINAL -e "tmux -f /home/redboot/.config/tmux.conf new" -t tmux
 for_window [title="tmux"] move scratchpad

@@ -177,6 +177,7 @@ handle_mime() {
             else
                 local format='terminal'
             fi
+            # pygmentize -f "${format}" -O "style=${PYGMENTIZE_STYLE}" -- "${FILE_PATH}" && exit 5
             env COLORTERM="${format}" bat --color=always --style=numbers "${FILE_PATH}" && exit 5 
             exit 2;;
 
