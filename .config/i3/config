@@ -14,6 +14,8 @@ bindsym $mod+Return exec $TERMINAL
 
 # kill focused window
 bindsym $mod+q kill
+# kill all windows
+bindsym $mod+Shift+q [class=".*"] kill
 
 # start dmenu (a program launcher)
 # bindsym $mod+d exec dmenu_run -i -fn "UbuntuMono Nerd Font:pixelsize=18"
