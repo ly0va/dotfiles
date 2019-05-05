@@ -1,0 +1,16 @@
+#!/usr/bin/env sh
+WIFI=wlp2s0
+ETHERNET=eno1
+
+if [[ "$(cat /sys/class/net/$ETHERNET/operstate)" = up ]]; then
+    echo " up"
+    exit
+fi
+
+if [[ "$(cat /sys/class/net/$WIFI/operstate)" = 'down' ]]; then
+    echo ' down'
+else
+    sudo cat /proc/net/wireless | grep $WIFI | awk '{printf " %d%%",$3*100/70}'
+fi
+
+
