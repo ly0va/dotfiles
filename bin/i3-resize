@@ -10,13 +10,9 @@ move() {
 }
 
 case $1 in
-    up)
-        move grow up shrink down ;;
-    down)
-        move shrink up grow down ;;
-    left)
-        move shrink right grow left ;;
-    right)
-        move grow right shrink left ;;
+    up)    move grow up shrink down ;;
+    down)  move shrink up grow down ;;
+    left)  move shrink right grow left ;;
+    right) move grow right shrink left ;;
 esac
 

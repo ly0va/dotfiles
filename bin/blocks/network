@@ -1,4 +1,4 @@
-#!/usr/bin/env sh
+#!/usr/bin/env bash
 WIFI=wlp2s0
 ETHERNET=eno1
 

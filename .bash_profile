@@ -11,7 +11,7 @@ export BROWSER=firefox
 export TERMINAL=termite
 
 # adding my scripts folder to PATH
-export PATH="$PATH:$HOME/bin"
+export PATH="$PATH:$HOME/bin:$HOME/bin/blocks"
 
 # some configs for bat and fzf
 export BAT_THEME="DarkNeon"
