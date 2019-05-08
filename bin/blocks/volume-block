@@ -1,0 +1,16 @@
+#!/usr/bin/env bash
+
+case $BLOCK_BUTTON in 
+    1) amixer -D pulse set Master toggle > /dev/null;;
+    5) amixer -D pulse set Master 5%+    > /dev/null;;
+    4) amixer -D pulse set Master 5%-    > /dev/null;;
+esac
+
+info=$(amixer -D pulse get Master)
+
+if [[ -n $(echo $info | grep '\[off\]') ]]; then
+    echo "ﱝ"
+else
+    echo "墳 $(egrep -o '[0-9]+%' <<< $info | head -1)"
+fi
+

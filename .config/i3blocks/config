@@ -5,7 +5,7 @@ interval=60
 label=
 
 [date]
-command=date "+%b %d"
+command=date-block
 interval=60
 label=
 
@@ -16,7 +16,7 @@ label=
 signal=1
 
 [battery]
-command=battery-watcher
+command=battery-block
 interval=30
 
 # [memory]
@@ -30,7 +30,7 @@ interval=30
 # label=
 
 [wifi]
-command=network
+command=network-block
 interval=5
 
 # [pacman]
@@ -45,7 +45,7 @@ signal=3
 label=
 
 [volume]
-command=volume
+command=volume-block
 interval=once
 signal=2
 

@@ -1,0 +1,8 @@
+#!/usr/bin/env bash
+
+case $BLOCK_BUTTON in
+    3) notify-send "$(cal -3)" ;; 
+    1) notify-send "$(cal)" ;;
+esac
+
+date "+%b %d"
