@@ -1,3 +1,21 @@
+" plugins go here
+call plug#begin('~/.local/share/nvim/plugged')
+
+Plug 'itchyny/lightline.vim'
+Plug 'tpope/vim-surround'
+Plug 'airblade/vim-gitgutter'
+Plug 'terryma/vim-multiple-cursors'
+" Plug 'tomtom/tcomment_vim'
+Plug 'tpope/vim-commentary'
+Plug 'michaeljsmith/vim-indent-object'
+Plug 'kana/vim-textobj-user'
+Plug 'kana/vim-textobj-entire'
+Plug 'Valloric/YouCompleteMe'
+
+call plug#end()
+
+let g:lightline = { 'colorscheme': 'one', }
+
 set nocompatible             " disable vi compatibility
 set nowrap                   " don't wrap my lines
 set clipboard=unnamedplus    " use clipboard as your default buffer
@@ -7,7 +25,7 @@ set mouse=a                  " mouse support
 set wildmenu                 " command mode autocomplete
 set encoding=utf-8           " unicode!!
 set showcmd                  " show the part of the command being typed
-set laststatus=0             " for nvim: hide status line
+set noshowmode               " since I have lihgtline
 set nohlsearch               " don't highlight search results
 syntax on                    " highlight syntax
 
@@ -33,9 +51,4 @@ nmap <c-o> :tabnew
 " reload apps when configs are edited - consider switching to entr
 autocmd BufWritePost ~/.config/i3/config !i3-msg reload
 autocmd BufWritePost ~/.config/i3blocks/config !i3-msg restart
-
-" tabline custom colors
-hi TabLine     ctermfg=254 ctermbg=238 cterm=none
-hi TabLineSel  ctermfg=231 ctermbg=235 cterm=bold
-hi TabLineFill ctermfg=254 ctermbg=238 cterm=none
 
