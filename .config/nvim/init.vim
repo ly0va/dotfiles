@@ -14,7 +14,11 @@ Plug 'Valloric/YouCompleteMe'
 
 call plug#end()
 
+" colorscheme for my status bar
 let g:lightline = { 'colorscheme': 'one', }
+" config file for c-family completion by YCM plugin
+let g:ycm_global_ycm_extra_conf = '~/.config/.ycm_extra_conf.py'
+
 
 set nocompatible             " disable vi compatibility
 set nowrap                   " don't wrap my lines

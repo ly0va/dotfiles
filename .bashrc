@@ -13,6 +13,7 @@ alias egrep='egrep --color=auto'
 alias vim='nvim'
 alias dots='/usr/bin/git --git-dir=$HOME/.dotfiles/ --work-tree=$HOME'
 alias tmux='tmux -f ~/.config/tmux.conf'
+alias youtube='youtube-viewer -W'
 
 # ignore duplicate lines and lines starting with space
 HISTCONTROL=ignoreboth
