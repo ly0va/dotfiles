@@ -9,6 +9,6 @@ compton -b
 # set the wallpaper
 feh --bg-scale --no-fehbg ~/.wallpaper
 # start notification daemon
-dunst -shrink &
+dunst &
 # lock after 5 mins of invactivity
 xautolock -time 10 -locker "my-lock -n" -detectsleep -corners ---- &
