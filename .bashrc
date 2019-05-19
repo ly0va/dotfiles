@@ -14,6 +14,7 @@ alias vim='nvim'
 alias dots='/usr/bin/git --git-dir=$HOME/.dotfiles/ --work-tree=$HOME'
 alias tmux='tmux -f ~/.config/tmux.conf'
 alias youtube='youtube-viewer -W'
+alias git='hub'
 
 # ignore duplicate lines and lines starting with space
 HISTCONTROL=ignoreboth

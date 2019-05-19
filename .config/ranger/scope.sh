@@ -83,6 +83,10 @@ handle_extension() {
             lynx -dump -- "${FILE_PATH}" && exit 5
             elinks -dump "${FILE_PATH}" && exit 5
             ;; # Continue with next handler on failure
+        # Object files
+        o|out)
+            # preview disassembly
+            objdump -d -M intel "${FILE_PATH}" | env COLORTERM=terminal256 bat --color=always -l asm && exit 5;
     esac
 }
 
@@ -172,13 +176,8 @@ handle_mime() {
             if [[ "$( stat --printf='%s' -- "${FILE_PATH}" )" -gt "${HIGHLIGHT_SIZE_MAX}" ]]; then
                 exit 2
             fi
-            if [[ "$( tput colors )" -ge 256 ]]; then
-                local format='terminal256'
-            else
-                local format='terminal'
-            fi
-            # pygmentize -f "${format}" -O "style=${PYGMENTIZE_STYLE}" -- "${FILE_PATH}" && exit 5
-            env COLORTERM="${format}" bat --color=always --style=numbers "${FILE_PATH}" && exit 5 
+            env COLORTERM=terminal256 bat --color=always "${FILE_PATH}" && exit 5 
+            pygmentize -f terminal256 -O "style=${PYGMENTIZE_STYLE}" -- "${FILE_PATH}" && exit 5
             exit 2;;
 
         # Image

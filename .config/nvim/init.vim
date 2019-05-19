@@ -16,8 +16,10 @@ call plug#end()
 
 " colorscheme for my status bar
 let g:lightline = { 'colorscheme': 'one', }
-" config file for c-family completion by YCM plugin
+" configs for YCM plugin
 let g:ycm_global_ycm_extra_conf = '~/.config/.ycm_extra_conf.py'
+let g:ycm_autoclose_preview_window_after_insertion = 1
+let g:ycm_autoclose_preview_window_after_completion = 1
 
 
 set nocompatible             " disable vi compatibility
