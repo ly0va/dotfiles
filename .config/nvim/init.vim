@@ -57,4 +57,9 @@ nmap <c-o> :tabnew
 " reload apps when configs are edited - consider switching to entr
 autocmd BufWritePost ~/.config/i3/config !i3-msg reload
 autocmd BufWritePost ~/.config/i3blocks/config !i3-msg restart
+autocmd BufWritePost ~/.Xresources !xrdb %
 
+" split panes
+hi VertSplit cterm=NONE
+nmap \|       :vnew<CR>
+nmap <bslash> :new<CR>
