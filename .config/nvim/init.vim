@@ -1,3 +1,6 @@
+" leader key
+let mapleader = ","
+
 " plugins go here
 call plug#begin('~/.local/share/nvim/plugged')
 
@@ -16,11 +19,11 @@ call plug#end()
 
 " colorscheme for my status bar
 let g:lightline = { 'colorscheme': 'one', }
+
 " configs for YCM plugin
 let g:ycm_global_ycm_extra_conf = '~/.config/.ycm_extra_conf.py'
 let g:ycm_autoclose_preview_window_after_insertion = 1
 let g:ycm_autoclose_preview_window_after_completion = 1
-
 
 set nocompatible             " disable vi compatibility
 set nowrap                   " don't wrap my lines
@@ -31,8 +34,9 @@ set mouse=a                  " mouse support
 set wildmenu                 " command mode autocomplete
 set encoding=utf-8           " unicode!!
 set showcmd                  " show the part of the command being typed
-set noshowmode               " since I have lihgtline
+set noshowmode               " since I have lightline
 set nohlsearch               " don't highlight search results
+set splitbelow splitright    " sane settings for where the new pane goes 
 syntax on                    " highlight syntax
 
 " indenting
@@ -43,23 +47,36 @@ set expandtab
 set autoindent
 set smartindent
 
-" ranger-like binding
-nmap ; :
+" ranger-like bindings
+nnoremap ;  :
+nnoremap s  :!
+nnoremap S  :%s//g<left><left>
+nnoremap gn :tabnew<cr>
 
 " save on Ctrl-S
-nmap <c-s> :w<CR>
-imap <c-s> <c-o>:w<CR>
-vmap <c-s> <c-c>:w<CR>
+nnoremap <c-s> :w<cr>
+inoremap <c-s> <c-o>:w<cr>
+vnoremap <c-s> <c-c>:w<cr>
 
-" man Ctrl-O to open file in new tab
-nmap <c-o> :tabnew
+" split panes
+hi VertSplit cterm=NONE
+nnoremap \|       :vnew<cr>
+nnoremap <bslash> :new<cr>
+nnoremap <m-w>    <c-w>
+
+" leader utilization
+nnoremap <leader>f :FZF<cr>
+nnoremap <leader>t :terminal<cr>:setlocal number! relativenumber!<cr>i
+
+" autocomplete braces
+inoremap {<cr> {<cr>}<esc>ko
+
+" terminal mode
+tnoremap <esc> <c-\><c-n>
 
 " reload apps when configs are edited - consider switching to entr
 autocmd BufWritePost ~/.config/i3/config !i3-msg reload
 autocmd BufWritePost ~/.config/i3blocks/config !i3-msg restart
 autocmd BufWritePost ~/.Xresources !xrdb %
+autocmd BufWritePost ~/.config/nvim/init.vim source %
 
-" split panes
-hi VertSplit cterm=NONE
-nmap \|       :vnew<CR>
-nmap <bslash> :new<CR>
