@@ -28,6 +28,9 @@ if [ $level -le 10 ]; then
         touch /tmp/battery-low
         notify-send -u critical "Battery running low: $level%"
     fi
+    if [ $level -le 3 ]; then
+        systemctl suspend
+    fi
 elif [ -f /tmp/battery-low ]; then
     rm /tmp/battery-low
 fi
