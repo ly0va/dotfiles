@@ -18,7 +18,7 @@ export BAT_THEME="DarkNeon"
 export BAT_STYLE="numbers,changes"
 export FZF_DEFAULT_COMMAND='ag --hidden --ignore .git -g ""'
 export FZF_CTRL_T_COMMAND='ag --hidden --ignore .git -g ""'
-export FZF_ALT_C_COMMAND='ag --hidden -g "" --ignore .git | xargs dirname | sort | uniq'
+export FZF_ALT_C_COMMAND='ag -0 --hidden -g "" --ignore .git | xargs -0 dirname | sort | uniq'
 export FZF_DEFAULT_OPTS='--multi --height 50% --reverse 
                          --preview "bat --color=always -p {} || tree {} || echo Preview is unavailable"
                          --preview-window right:hidden --bind f1:toggle-preview

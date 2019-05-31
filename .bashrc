@@ -24,7 +24,6 @@ HISTFILESIZE=
 
 # append to the history file, not overwrite
 shopt -s histappend
-
 # update values of LINES and COLUMNS after each command
 shopt -s checkwinsize
 # glob pattern ** will match all files and zero or more directories and subdirectories
