@@ -4,7 +4,7 @@ level=$(acpi | egrep -o "[0-9]+%")
 level=${level%?}
 state=$(acpi | grep -o "Discharging")
 
-if [ -z $(acpi | grep -o "Discharging") ]; then
+if [ -z "$state" ]; then
     printf 
 else
     case $level in
@@ -23,7 +23,7 @@ fi
 
 printf " %d%%\n" $level
 
-if [ $level -le 10 ]; then
+if [ $level -le 10 ] && [ -n "$state" ]; then
     if [ ! -f /tmp/battery-low ]; then
         touch /tmp/battery-low
         notify-send -u critical "Battery running low: $level%"

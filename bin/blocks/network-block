@@ -13,4 +13,9 @@ else
     sudo cat /proc/net/wireless | grep $WIFI | awk '{printf " %d%%",$3*100/70}'
 fi
 
+case $BLOCK_BUTTON in
+    1) notify-send "$(nmcli device | grep $WIFI | awk '{print $4}')" ;;
+esac
+
+
 

@@ -133,7 +133,7 @@ bindsym $mod+Shift+Prior move workspace prev; workspace prev
 bindsym $mod+Shift+Next  move workspace next; workspace next
 
 # frequently used apps: "execute" mode
-set $execute Execute: [R]anger [F]irefox [T]elegram [C]ode [M]ail
+set $execute Execute: [S]hell [R]anger [F]irefox [T]elegram [C]ode [M]ail
 bindsym $mod+e mode "$execute"
 mode "$execute" {
     bindsym Return workspace $ws1; exec $TERMINAL; mode "default"
@@ -142,6 +142,7 @@ mode "$execute" {
     bindsym t workspace $ws3; exec telegram-desktop; mode "default"
     bindsym c workspace $ws4; exec code; mode "default"
     bindsym m workspace $ws6; exec thunderbird; mode "default"
+    bindsym s                 exec $TERMINAL; mode "default"
     bindsym Return mode "default"
     bindsym Escape mode "default"
     bindsym $mod+e mode "default"
