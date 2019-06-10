@@ -1,6 +1,6 @@
 [options]
 allow_bold = true
-font = UbuntuMono Nerd Font 11
+font = UbuntuMono Nerd Font 13
 scrollback_lines = 10000
 
 # "system", "on" or "off"

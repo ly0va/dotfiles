@@ -14,6 +14,8 @@ Plug 'michaeljsmith/vim-indent-object'
 Plug 'kana/vim-textobj-user'
 Plug 'kana/vim-textobj-entire'
 Plug 'Valloric/YouCompleteMe'
+" Plug 'huawenyu/neogdb.vim'
+Plug 'sakhnik/nvim-gdb', { 'do': ':!./install.sh \| UpdateRemotePlugins' }
 
 call plug#end()
 
@@ -37,6 +39,8 @@ set showcmd                  " show the part of the command being typed
 set noshowmode               " since I have lightline
 set nohlsearch               " don't highlight search results
 set splitbelow splitright    " sane settings for where the new pane goes 
+set noshowmatch              " don't highlight matching brackets
+let loaded_matchparen = 1
 syntax on                    " highlight syntax
 
 " indenting
