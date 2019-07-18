@@ -40,6 +40,7 @@ set noshowmode               " since I have lightline
 set nohlsearch               " don't highlight search results
 set splitbelow splitright    " sane settings for where the new pane goes 
 set noshowmatch              " don't highlight matching brackets
+set noswapfile               " don't create .swp files
 let loaded_matchparen = 1
 syntax on                    " highlight syntax
 
@@ -67,6 +68,10 @@ hi VertSplit cterm=NONE
 nnoremap \|       :vnew<cr>
 nnoremap <bslash> :new<cr>
 nnoremap <m-w>    <c-w>
+
+" indenting
+vnoremap > >gv
+vnoremap < <gv
 
 " leader utilization
 nnoremap <leader>f :FZF<cr>

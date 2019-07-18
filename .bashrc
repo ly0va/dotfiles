@@ -15,6 +15,8 @@ alias dots='/usr/bin/git --git-dir=$HOME/.dotfiles/ --work-tree=$HOME'
 alias tmux='tmux -f ~/.config/tmux.conf'
 alias youtube='youtube-viewer -W'
 alias git='hub'
+alias torrent='transmission-cli'
+alias pacs='sudo pacman -S'
 
 # ignore duplicate lines and lines starting with space
 HISTCONTROL=ignoreboth

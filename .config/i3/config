@@ -225,7 +225,7 @@ for_window [title="tmux"] move scratchpad
 bindsym $mod+Shift+Return exec $TERMINAL -e "tmux new" -t tmux
 
 # temporary: for MAN development
-for_window [class="electron"] floating enable
+for_window [class="phys-helper"] fullscreen toggle
 
 # mount & unmount drives
 bindsym $mod+m exec --no-startup-id sudo dmount
