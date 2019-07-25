@@ -106,7 +106,7 @@ bindsym $mod+6 workspace $ws6
 bindsym $mod+7 workspace $ws7
 bindsym $mod+8 workspace $ws8
 bindsym $mod+9 workspace $ws9
-bindsym $mod+x scratchpad show
+bindsym $mod+x exec --no-startup-id "i3-msg -t get_tree | python -m json.tool | grep tmux || $TERMINAL -e tmux-start -t tmux; i3-msg 'scratchpad show'"
 bindsym $mod+0 scratchpad show
 
 # move focused container to workspace
@@ -220,9 +220,8 @@ smart_borders on
 exec --no-startup-id startup
 
 # run scratchpad terminal with tmux
-exec --no-startup-id $TERMINAL -e "tmux -f /home/redboot/.config/tmux.conf new" -t tmux
+exec --no-startup-id $TERMINAL -e tmux-start -t tmux
 for_window [title="tmux"] move scratchpad
-bindsym $mod+Shift+Return exec $TERMINAL -e "tmux new" -t tmux
 
 # temporary: for MAN development
 for_window [class="phys-helper"] fullscreen toggle

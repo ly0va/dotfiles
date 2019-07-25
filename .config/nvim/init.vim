@@ -41,6 +41,7 @@ set nohlsearch               " don't highlight search results
 set splitbelow splitright    " sane settings for where the new pane goes 
 set noshowmatch              " don't highlight matching brackets
 set noswapfile               " don't create .swp files
+set undofile                 " remember undo tree between sessions
 let loaded_matchparen = 1
 syntax on                    " highlight syntax
 

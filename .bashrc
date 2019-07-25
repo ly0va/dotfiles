@@ -17,12 +17,16 @@ alias youtube='youtube-viewer -W'
 alias git='hub'
 alias torrent='transmission-cli'
 alias pacs='sudo pacman -S'
+alias gdb='gdb -q'
 
 # ignore duplicate lines and lines starting with space
 HISTCONTROL=ignoreboth
 # set history size
-HISTSIZE=
-HISTFILESIZE=
+HISTSIZE=-1
+HISTFILESIZE=-1
+
+# append to history file immediately
+PROMPT_COMMAND='history -a'
 
 # append to the history file, not overwrite
 shopt -s histappend
