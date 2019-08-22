@@ -91,3 +91,9 @@ autocmd BufWritePost ~/.config/i3blocks/config !i3-msg restart
 autocmd BufWritePost ~/.Xresources !xrdb %
 autocmd BufWritePost ~/.config/nvim/init.vim source %
 
+" template files
+autocmd BufNewFile *.c   0r ~/.config/nvim/templates/empty.c
+autocmd BufNewFile *.cpp 0r ~/.config/nvim/templates/empty.cpp
+autocmd BufNewFile *.py  0r ~/.config/nvim/templates/empty.py
+autocmd BufNewFile *.sh  0r ~/.config/nvim/templates/empty.sh
+
