@@ -181,7 +181,7 @@ bar {
     position top    
     status_command i3blocks
     strip_workspace_numbers yes
-    font pango:UbuntuMono Nerd Font 12
+    font pango:UbuntuMono Nerd Font 13
 
     colors {
       # class              border  bgcolor text
@@ -221,7 +221,7 @@ exec --no-startup-id startup
 
 # run scratchpad terminal with tmux
 exec --no-startup-id $TERMINAL -e tmux-start -t tmux
-for_window [title="tmux"] move scratchpad
+for_window [title="^tmux$"] move scratchpad
 
 # temporary: for MAN development
 for_window [class="phys-helper"] fullscreen toggle

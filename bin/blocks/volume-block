@@ -8,7 +8,7 @@ esac
 
 info=$(amixer -D pulse get Master)
 
-if [[ -n $(echo $info | grep '\[off\]') ]]; then
+if [[ -n $(grep '\[off\]' <<< $info) ]]; then
     echo "ﱝ"
 else
     echo "墳 $(egrep -o '[0-9]+%' <<< $info | head -1)"

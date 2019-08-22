@@ -13,11 +13,11 @@ alias egrep='egrep --color=auto'
 alias vim='nvim'
 alias dots='/usr/bin/git --git-dir=$HOME/.dotfiles/ --work-tree=$HOME'
 alias tmux='tmux -f ~/.config/tmux.conf'
-alias youtube='youtube-viewer -W'
 alias git='hub'
 alias torrent='transmission-cli'
 alias pacs='sudo pacman -S'
 alias gdb='gdb -q'
+alias rgr='ranger'
 
 # ignore duplicate lines and lines starting with space
 HISTCONTROL=ignoreboth

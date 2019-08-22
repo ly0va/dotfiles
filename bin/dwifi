@@ -1,0 +1,13 @@
+#!/bin/bash
+
+ssid=$(nmcli device wifi list | tail +2 | dmenu -l 10 -i | awk '{print $1}')
+
+if [[ "$ssid" == "*" ]]; then
+    notify-send "Already connected"
+else
+    password="$(echo -n | dmenu -p 'Password:')"
+    notify-send "$(nmcli device wifi connect $ssid password '$password')"
+fi
+
+
+

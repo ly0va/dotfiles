@@ -53,11 +53,12 @@ set expandtab
 set autoindent
 set smartindent
 
-" ranger-like bindings
+" some bindings
 nnoremap ;  :
 nnoremap s  :!
 nnoremap S  :%s//g<left><left>
 nnoremap gn :tabnew<cr>
+nnoremap <backspace> "_
 
 " save on Ctrl-S
 nnoremap <c-s> :w<cr>
