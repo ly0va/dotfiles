@@ -97,3 +97,7 @@ autocmd BufNewFile *.cpp 0r ~/.config/nvim/templates/empty.cpp
 autocmd BufNewFile *.py  0r ~/.config/nvim/templates/empty.py
 autocmd BufNewFile *.sh  0r ~/.config/nvim/templates/empty.sh
 
+" make scripts executable
+autocmd BufWritePost *.py silent !chmod u+x %
+autocmd BufWritePost *.sh silent !chmod u+x %
+

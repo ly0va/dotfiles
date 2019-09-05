@@ -4,5 +4,5 @@ source /usr/share/peda/peda.py
 # Powned Bag:
 # source /usr/share/pwndbg/gdbinit.py
 
-unset env LINES
-unset env COLUMNS
+set disassembly-flavor intel
+set pagination off

@@ -14,3 +14,5 @@ dunst &
 xautolock -time 10 -locker "my-lock -n" -detectsleep -corners ---- &
 # init mega server for syncing
 mega-cmd-server
+# screenshot taker & editor
+flameshot &

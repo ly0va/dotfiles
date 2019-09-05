@@ -12,12 +12,15 @@ alias fgrep='fgrep --color=auto'
 alias egrep='egrep --color=auto'
 alias vim='nvim'
 alias dots='/usr/bin/git --git-dir=$HOME/.dotfiles/ --work-tree=$HOME'
-alias tmux='tmux -f ~/.config/tmux.conf'
 alias git='hub'
 alias torrent='transmission-cli'
 alias pacs='sudo pacman -S'
 alias gdb='gdb -q'
 alias rgr='ranger'
+
+py() {
+    python2 -c "print $@"
+}
 
 # ignore duplicate lines and lines starting with space
 HISTCONTROL=ignoreboth
@@ -26,7 +29,7 @@ HISTSIZE=-1
 HISTFILESIZE=-1
 
 # append to history file immediately
-PROMPT_COMMAND='history -a'
+PROMPT_COMMAND='errno=$?; [ $errno != 0 ] && echo -en "\e[31m[$errno]\e[m"; history -a'
 
 # append to the history file, not overwrite
 shopt -s histappend
