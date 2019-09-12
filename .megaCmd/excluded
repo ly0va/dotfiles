@@ -1,0 +1,6 @@
+.*
+peda*.txt
+*.o
+package-lock.json
+node_modules
+~*

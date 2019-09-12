@@ -2,22 +2,24 @@
 let mapleader = ","
 
 " plugins go here
-call plug#begin('~/.local/share/nvim/plugged')
+if has("nvim")
+    call plug#begin('~/.local/share/nvim/plugged')
 
-Plug 'itchyny/lightline.vim'
-Plug 'tpope/vim-surround'
-Plug 'airblade/vim-gitgutter'
-Plug 'terryma/vim-multiple-cursors'
-" Plug 'tomtom/tcomment_vim'
-Plug 'tpope/vim-commentary'
-Plug 'michaeljsmith/vim-indent-object'
-Plug 'kana/vim-textobj-user'
-Plug 'kana/vim-textobj-entire'
-Plug 'Valloric/YouCompleteMe'
-" Plug 'huawenyu/neogdb.vim'
-Plug 'sakhnik/nvim-gdb', { 'do': ':!./install.sh \| UpdateRemotePlugins' }
+    Plug 'itchyny/lightline.vim'
+    Plug 'tpope/vim-surround'
+    Plug 'airblade/vim-gitgutter'
+    Plug 'terryma/vim-multiple-cursors'
+    " Plug 'tomtom/tcomment_vim'
+    Plug 'tpope/vim-commentary'
+    Plug 'michaeljsmith/vim-indent-object'
+    Plug 'kana/vim-textobj-user'
+    Plug 'kana/vim-textobj-entire'
+    Plug 'Valloric/YouCompleteMe'
+    " Plug 'huawenyu/neogdb.vim'
+    Plug 'sakhnik/nvim-gdb', { 'do': ':!./install.sh \| UpdateRemotePlugins' }
 
-call plug#end()
+    call plug#end()
+endif
 
 " colorscheme for my status bar
 let g:lightline = { 'colorscheme': 'one', }
