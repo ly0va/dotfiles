@@ -10,7 +10,7 @@ fi
 if [[ "$(cat /sys/class/net/$WIFI/operstate)" = 'down' ]]; then
     echo ' down'
 else
-    sudo cat /proc/net/wireless | grep $WIFI | awk '{printf " %d%%",$3*100/70}'
+    sudo cat /proc/net/wireless | grep $WIFI | awk '{printf " %d%%\n",$3*100/70}'
 fi
 
 case $BLOCK_BUTTON in

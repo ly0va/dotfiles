@@ -29,7 +29,7 @@ HISTSIZE=-1
 HISTFILESIZE=-1
 
 # append to history file immediately
-PROMPT_COMMAND='errno=$?; [ $errno != 0 ] && echo -en "\e[31m[$errno]\e[m"; history -a'
+PROMPT_COMMAND='errno=$?; [ $errno != 0 ] && echo -en "\e[31m-[$errno]-\e[m"; history -a'
 
 # append to the history file, not overwrite
 shopt -s histappend

@@ -85,6 +85,9 @@ inoremap {<cr> {<cr>}<esc>ko
 " terminal mode
 tnoremap <esc> <c-\><c-n>
 
+" undo/redo
+nnoremap U <c-r>
+
 " reload apps when configs are edited - consider switching to entr
 autocmd BufWritePost ~/.config/i3/config !i3-msg reload
 autocmd BufWritePost ~/.config/i3blocks/config !i3-msg restart

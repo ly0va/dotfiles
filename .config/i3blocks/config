@@ -1,16 +1,16 @@
 # vim:ft=cfg
 [time]
-command=date +%H:%M
+command=echo " $(date +%H:%M)"
 interval=60
 label=
 
 [date]
-command=date-block
+command=echo " $(date-block)"
 interval=60
 label=
 
 [keyboard]
-command=kb-layout print %s
+command=echo " $(kb-layout print %s)"
 interval=once
 label=
 signal=1
@@ -39,7 +39,7 @@ interval=5
 # interval=1800
 
 [brightness]
-command=echo $(xbacklight -get)%
+command=echo " $(xbacklight -get)%"
 interval=once
 signal=3
 label=
