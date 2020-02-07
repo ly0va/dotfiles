@@ -5,8 +5,7 @@
 # If not running interactively, don't do anything
 [[ $- != *i* ]] && return
 
-# colorful aliases
-alias ls='lsd'
+alias ls='exa'
 alias grep='grep --color=auto'
 alias fgrep='fgrep --color=auto'
 alias egrep='egrep --color=auto'
@@ -17,6 +16,11 @@ alias torrent='transmission-cli'
 alias pacs='sudo pacman -S'
 alias gdb='gdb -q'
 alias rgr='ranger'
+alias ipython='python3 -m IPython --no-banner'
+alias ipython2='python2 -m IPython --no-banner'
+alias pinctf32='~/gits/PinCTF/pinCTF.py -l ~/gits/PinCTF/obj-ia32'
+alias pinctf64='~/gits/PinCTF/pinCTF.py -l ~/gits/PinCTF/obj-intel64'
+alias ino='arduino-cli'
 
 py() {
     python2 -c "print $@"
@@ -28,8 +32,16 @@ HISTCONTROL=ignoreboth
 HISTSIZE=-1
 HISTFILESIZE=-1
 
+prompt_command() {
+    errno=$?
+    [ $errno != 0 ] && echo -en "\e[31m-[$errno]-\e[m"
+    history -a
+    history -c
+    history -r
+}
+
 # append to history file immediately
-PROMPT_COMMAND='errno=$?; [ $errno != 0 ] && echo -en "\e[31m-[$errno]-\e[m"; history -a'
+PROMPT_COMMAND="prompt_command"
 
 # append to the history file, not overwrite
 shopt -s histappend
@@ -43,7 +55,7 @@ shopt -s autocd
 stty -ixon
 
 # set a pretty prompt
-PS1="\[\e[32m\]\u@\h\[\e[m\]:\[\e[34m\]\w\[\e[m\]\n\\$ "    
+PS1="\[\e[32m\]\u@\h\[\e[m\]:\[\e[34m\]\w\[\e[m\]\n\\$ "
 
 # keybindings and tab-completion for fzf
 source /usr/share/fzf/key-bindings.bash

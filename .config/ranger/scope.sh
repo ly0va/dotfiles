@@ -86,7 +86,12 @@ handle_extension() {
         # Object files
         o|out)
             # preview disassembly
-            objdump -d -M intel "${FILE_PATH}" | env COLORTERM=terminal256 bat --color=always -l asm && exit 5;
+            objdump -d -M intel "${FILE_PATH}" | env COLORTERM=terminal256 bat --color=always -l asm && exit 5
+            ;;
+        # Arduino
+        ino) 
+            env COLORTERM=terminal256 bat --color=always -l cpp "${FILE_PATH}" && exit 5
+            ;;
     esac
 }
 

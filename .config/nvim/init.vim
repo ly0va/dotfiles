@@ -9,14 +9,14 @@ if has("nvim")
     Plug 'tpope/vim-surround'
     Plug 'airblade/vim-gitgutter'
     Plug 'terryma/vim-multiple-cursors'
-    " Plug 'tomtom/tcomment_vim'
     Plug 'tpope/vim-commentary'
     Plug 'michaeljsmith/vim-indent-object'
     Plug 'kana/vim-textobj-user'
     Plug 'kana/vim-textobj-entire'
     Plug 'Valloric/YouCompleteMe'
-    " Plug 'huawenyu/neogdb.vim'
     Plug 'sakhnik/nvim-gdb', { 'do': ':!./install.sh \| UpdateRemotePlugins' }
+    Plug 'jceb/vim-orgmode'
+    Plug 'sheerun/vim-polyglot'
 
     call plug#end()
 endif
@@ -26,14 +26,15 @@ let g:lightline = { 'colorscheme': 'one', }
 
 " configs for YCM plugin
 let g:ycm_global_ycm_extra_conf = '~/.config/.ycm_extra_conf.py'
-let g:ycm_autoclose_preview_window_after_insertion = 1
+let g:ycm_confirm_extra_conf = 0
+let g:ycm_enable_diagnostic_highlighting = 0
 let g:ycm_autoclose_preview_window_after_completion = 1
 
 set nocompatible             " disable vi compatibility
 set nowrap                   " don't wrap my lines
 set clipboard=unnamedplus    " use clipboard as your default buffer
 set incsearch                " search while I'm typing
-set number relativenumber    " line numbers, relative
+set number                   " line numbers
 set mouse=a                  " mouse support
 set wildmenu                 " command mode autocomplete
 set encoding=utf-8           " unicode!!
@@ -41,7 +42,7 @@ set showcmd                  " show the part of the command being typed
 set noshowmode               " since I have lightline
 set nohlsearch               " don't highlight search results
 set splitbelow splitright    " sane settings for where the new pane goes 
-set noshowmatch              " don't highlight matching brackets
+set showmatch                " highlight matching brackets
 set noswapfile               " don't create .swp files
 set undofile                 " remember undo tree between sessions
 let loaded_matchparen = 1
@@ -61,6 +62,17 @@ nnoremap s  :!
 nnoremap S  :%s//g<left><left>
 nnoremap gn :tabnew<cr>
 nnoremap <backspace> "_
+nnoremap <down> g<down>
+nnoremap <up> g<up>
+nnoremap j gj
+nnoremap k gk
+
+" swapping lines
+" does not properly work on first/last line
+nnoremap <m-down> "ddd"dp
+nnoremap <m-up>   "dddk"dP
+imap <m-down> <esc><m-down>i
+imap <m-up>   <esc><m-up>i
 
 " save on Ctrl-S
 nnoremap <c-s> :w<cr>
@@ -79,7 +91,7 @@ vnoremap < <gv
 
 " leader utilization
 nnoremap <leader>f :FZF<cr>
-nnoremap <leader>t :terminal<cr>:setlocal number! relativenumber!<cr>i
+nnoremap <leader>t :terminal<cr>:setlocal number!<cr>i
 
 " autocomplete braces
 inoremap {<cr> {<cr>}<esc>ko

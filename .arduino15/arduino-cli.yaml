@@ -1,0 +1,15 @@
+board_manager:
+  additional_urls: [
+      "https://raw.githubusercontent.com/stm32duino/BoardManagerFiles/master/STM32/package_stm_index.json",
+      "https://dl.espressif.com/dl/package_esp32_index.json"
+  ]
+daemon:
+  port: "50051"
+directories:
+  data: /home/redboot/.arduino15
+  downloads: /home/redboot/.arduino15/staging
+  user: /home/redboot/docs/arduino
+logging:
+  file: ""
+  format: text
+  level: info
