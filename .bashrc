@@ -63,3 +63,6 @@ source /usr/share/fzf/completion.bash
 bind -x '"\ef": "fzf-file-widget"'
 bind "$(bind -s | grep history | sed 's/\\C-r/\\ed/')"
 bind -r "\C-r"
+
+# for tmux
+export TERM=screen-256color

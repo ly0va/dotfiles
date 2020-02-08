@@ -217,7 +217,7 @@ exec --no-startup-id startup
 
 # run scratchpad terminal with tmux
 exec --no-startup-id $TERMINAL -e tmux-start -t tmux
-for_window [title="^tmux$"] move scratchpad
+for_window [title="^tmux$"] move scratchpad, resize set 876 546
 
 # temporary: for MAN development
 for_window [class="phys-helper"] fullscreen toggle
