@@ -48,7 +48,7 @@ set undofile                 " remember undo tree between sessions
 let loaded_matchparen = 1
 syntax on                    " highlight syntax
 
-" indenting
+" indentation
 filetype plugin indent on
 set tabstop=4
 set shiftwidth=4
@@ -69,10 +69,10 @@ nnoremap k gk
 
 " swapping lines
 " does not properly work on first/last line
-nnoremap <m-down> "ddd"dp
-nnoremap <m-up>   "dddk"dP
-imap <m-down> <esc><m-down>i
-imap <m-up>   <esc><m-up>i
+nnoremap <c-down> "ddd"dp
+nnoremap <c-up>   "dddk"dP
+imap <c-down> <esc><c-down>i
+imap <c-up>   <esc><c-up>i
 
 " save on Ctrl-S
 nnoremap <c-s> :w<cr>
@@ -88,6 +88,10 @@ nnoremap <m-w>    <c-w>
 " indenting
 vnoremap > >gv
 vnoremap < <gv
+vmap <tab> >
+vmap <s-tab> <
+nnoremap <tab> >>
+nnoremap <s-tab> <<
 
 " leader utilization
 nnoremap <leader>f :FZF<cr>
