@@ -1,7 +1,3 @@
-#
-# ~/.bashrc
-#
-
 # If not running interactively, don't do anything
 [[ $- != *i* ]] && return
 
@@ -14,8 +10,10 @@ alias dots='/usr/bin/git --git-dir=$HOME/.dotfiles/ --work-tree=$HOME'
 alias git='hub'
 alias torrent='transmission-cli'
 alias pacs='sudo pacman -S'
+alias pacr='sudo pacman -Rns'
 alias gdb='gdb -q'
 alias rgr='ranger'
+alias r='ranger'
 alias ipython='python3 -m IPython --no-banner'
 alias ipython2='python2 -m IPython --no-banner'
 alias pinctf32='~/gits/PinCTF/pinCTF.py -l ~/gits/PinCTF/obj-ia32'

@@ -1,10 +1,9 @@
 " leader key
-let mapleader = ","
+let mapleader = " "
 
 " plugins go here
 if has("nvim")
     call plug#begin('~/.local/share/nvim/plugged')
-
     Plug 'itchyny/lightline.vim'
     Plug 'tpope/vim-surround'
     Plug 'airblade/vim-gitgutter'
@@ -15,9 +14,10 @@ if has("nvim")
     Plug 'kana/vim-textobj-entire'
     Plug 'Valloric/YouCompleteMe'
     Plug 'sakhnik/nvim-gdb', { 'do': ':!./install.sh \| UpdateRemotePlugins' }
-    Plug 'jceb/vim-orgmode'
+    " Plug 'jceb/vim-orgmode'
     Plug 'sheerun/vim-polyglot'
-
+    Plug 'skywind3000/asyncrun.vim'
+    " Plug 'pedsm/sprint'
     call plug#end()
 endif
 
@@ -45,6 +45,7 @@ set splitbelow splitright    " sane settings for where the new pane goes
 set showmatch                " highlight matching brackets
 set noswapfile               " don't create .swp files
 set undofile                 " remember undo tree between sessions
+set scrolloff=2              " leave at least 2 lines above & below cursor
 let loaded_matchparen = 1
 syntax on                    " highlight syntax
 
@@ -56,23 +57,26 @@ set expandtab
 set autoindent
 set smartindent
 
-" some bindings
-nnoremap ;  :
-nnoremap s  :!
-nnoremap S  :%s//g<left><left>
-nnoremap gn :tabnew<cr>
-nnoremap <backspace> "_
-nnoremap <down> g<down>
-nnoremap <up> g<up>
-nnoremap j gj
-nnoremap k gk
+" some sensible bindings
+nnoremap U <c-r>
+nnoremap cc "_cc
+noremap ;  :
+noremap gn :tabnew<cr>
+noremap S  :%s//g<left><left>
+noremap <backspace> "_
+noremap <down> g<down>
+noremap <up> g<up>
+noremap j gj
+noremap k gk
+noremap Y y$
 
 " swapping lines
-" does not properly work on first/last line
-nnoremap <c-down> "ddd"dp
-nnoremap <c-up>   "dddk"dP
-imap <c-down> <esc><c-down>i
-imap <c-up>   <esc><c-up>i
+nnoremap <c-down> :m .+1<CR>==
+nnoremap <c-up>   :m .-2<CR>==
+inoremap <c-down> <Esc>:m .+1<CR>==gi
+inoremap <c-up>   <Esc>:m .-2<CR>==gi
+vnoremap <c-down> :m '>+1<CR>gv=gv
+vnoremap <c-up>   :m '<-2<CR>gv=gv
 
 " save on Ctrl-S
 nnoremap <c-s> :w<cr>
@@ -83,7 +87,18 @@ vnoremap <c-s> <c-c>:w<cr>
 hi VertSplit cterm=NONE
 nnoremap \|       :vnew<cr>
 nnoremap <bslash> :new<cr>
-nnoremap <m-w>    <c-w>
+noremap  <m-w>    <C-W>
+
+" smart resizing
+nmap          <m-w>+     <C-W>+<SID>ws
+nmap          <m-w>-     <C-W>-<SID>ws
+nmap          <m-w><     <C-W><<SID>ws
+nmap          <m-w>>     <C-W>><SID>ws
+nn <script>   <SID>ws+   <C-W>+<SID>ws
+nn <script>   <SID>ws-   <C-W>-<SID>ws
+nn <script>   <SID>ws<   <C-W><<SID>ws
+nn <script>   <SID>ws>   <C-W>><SID>ws
+nmap          <SID>ws    <Nop> 
 
 " indenting
 vnoremap > >gv
@@ -94,8 +109,13 @@ nnoremap <tab> >>
 nnoremap <s-tab> <<
 
 " leader utilization
-nnoremap <leader>f :FZF<cr>
-nnoremap <leader>t :terminal<cr>:setlocal number!<cr>i
+noremap <leader>f :FZF<cr>
+noremap <leader>t :terminal<cr>:setlocal number!<cr>i
+noremap <leader>s :!
+
+" compile and run things
+map <F5> :AsyncRun -save=1 -mode=term -rows=5 ./%<cr>
+map <F9> :AsyncRun -save=1 -mode=term -rows=5 make %< && ./%<<cr>
 
 " autocomplete braces
 inoremap {<cr> {<cr>}<esc>ko
@@ -103,14 +123,12 @@ inoremap {<cr> {<cr>}<esc>ko
 " terminal mode
 tnoremap <esc> <c-\><c-n>
 
-" undo/redo
-nnoremap U <c-r>
-
 " reload apps when configs are edited - consider switching to entr
 autocmd BufWritePost ~/.config/i3/config !i3-msg reload
 autocmd BufWritePost ~/.config/i3blocks/config !i3-msg restart
 autocmd BufWritePost ~/.Xresources !xrdb %
 autocmd BufWritePost ~/.config/nvim/init.vim source %
+autocmd BufWritePost ~/.vimrc source %
 
 " template files
 autocmd BufNewFile *.c   0r ~/.config/nvim/templates/empty.c
@@ -121,4 +139,3 @@ autocmd BufNewFile *.sh  0r ~/.config/nvim/templates/empty.sh
 " make scripts executable
 autocmd BufWritePost *.py silent !chmod u+x %
 autocmd BufWritePost *.sh silent !chmod u+x %
-

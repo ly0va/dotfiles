@@ -1,7 +1,3 @@
-#
-# ~/.bash_profile
-#
-
 [[ -f ~/.bashrc ]] && . ~/.bashrc
 
 # default apps
@@ -13,7 +9,6 @@ export TERMINAL=termite
 # adding my scripts folder to PATH
 export PATH="$PATH:$HOME/bin:$HOME/bin/blocks:$HOME/go/bin"
 export PATH="$HOME/.cargo/bin:$PATH"
-#export PYTHONPATH="/usr/lib/python3.7/site-packages:/usr/lib/python3.8/site-packages"
 
 # some configs for bat and fzf
 export BAT_THEME="DarkNeon"
@@ -37,5 +32,3 @@ if [[ "$(tty)" = "/dev/tty1" ]]; then
     pgrep i3 || startx &> /dev/null
 fi
 
-
-export PATH="$HOME/.cargo/bin:$PATH"
