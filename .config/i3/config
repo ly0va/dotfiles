@@ -100,7 +100,7 @@ bindsym $mod+6 workspace $ws6
 bindsym $mod+7 workspace $ws7
 bindsym $mod+8 workspace $ws8
 bindsym $mod+9 workspace $ws9
-bindsym $mod+x exec --no-startup-id "i3-msg -t get_tree | grep tmux || $TERMINAL -e tmux-start -t tmux; i3-msg 'scratchpad show'"
+bindsym $mod+x exec --no-startup-id "i3-msg -t get_tree | grep SCRATCHPAD || $TERMINAL --class SCRATCHPAD; i3-msg 'scratchpad show'"
 bindsym $mod+0 scratchpad show
 
 # move focused container to workspace
@@ -201,8 +201,8 @@ bindsym XF86AudioLowerVolume exec --no-startup-id amixer -D pulse set Master 5%-
 bindsym XF86AudioMute        exec --no-startup-id amixer -D pulse set Master toggle     && pkill -SIGRTMIN+2 i3blocks
 
 # brightness
-bindsym XF86MonBrightnessUp   exec --no-startup-id sudo xbacklight +10 && pkill -SIGRTMIN+3 i3blocks
-bindsym XF86MonBrightnessDown exec --no-startup-id sudo xbacklight -10 && pkill -SIGRTMIN+3 i3blocks
+bindsym XF86MonBrightnessUp   exec --no-startup-id xbacklight +10 && pkill -SIGRTMIN+3 i3blocks
+bindsym XF86MonBrightnessDown exec --no-startup-id xbacklight -10 && pkill -SIGRTMIN+3 i3blocks
 
 # get rid of the title bar
 default_border pixel 2
@@ -216,11 +216,10 @@ smart_borders on
 exec --no-startup-id startup
 
 # run scratchpad terminal with tmux
-exec --no-startup-id $TERMINAL -e tmux-start -t tmux
-for_window [title="^tmux$"] move scratchpad, resize set 876 546
+for_window [class="^SCRATCHPAD$"] move scratchpad, resize set 876 546
 
 # temporary: for MAN development
-for_window [class="phys-helper"] fullscreen toggle
+# for_window [class="phys-helper"] fullscreen toggle
 
 # mount & unmount drives
 bindsym $mod+m exec --no-startup-id sudo dmount

@@ -1,23 +1,54 @@
 # vim:ft=cfg
+[corona-total]
+command=corona | awk '/Worldwide/ {print $4}'
+interval=600
+label= 
+color=#ffff77
+
+[corona-cured]
+command=corona | awk '/Worldwide/ {print $12}'
+interval=600
+label= 
+color=#66ff66
+
+[corona-deaths]
+command=corona | awk '/Worldwide/ {print $8}'
+interval=600
+label=ﮊ 
+color=#ff2a2a
+
+[corona-home]
+command=corona | awk '/Ukraine/ {print $5}'
+interval=600
+label=ﴥ 
+color=#7777ff
+min_width=250
+
 [time]
-command=echo " $(date +%H:%M)"
+command=date +%H:%M
 interval=60
-label=
+label= 
 
 [date]
-command=echo " $(date-block)"
+command=date-block
 interval=60
-label=
+label= 
+
+[keyboard]
+command=kb-layout print %s
+interval=once
+label= 
+signal=1
+
+[battery]
+command=battery-block
+interval=30
 
 [keyboard]
 command=echo " $(kb-layout print %s)"
 interval=once
 label=
 signal=1
-
-[battery]
-command=battery-block
-interval=30
 
 # [memory]
 # command=free | awk '/^Mem/ {printf "%d%%",100*$3/$2}'
@@ -32,6 +63,8 @@ interval=30
 [wifi]
 command=network-block
 interval=5
+align=center
+min_width=70
 
 # [pacman]
 # command=pacman -Qu | wc -l

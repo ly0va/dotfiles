@@ -1,5 +1,5 @@
 # PEDA:
-source /usr/share/peda/peda.py
+# source /usr/share/peda/peda.py
 
 # Powned Bag:
 # source /usr/share/pwndbg/gdbinit.py

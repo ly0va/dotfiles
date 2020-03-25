@@ -59,8 +59,5 @@ PS1="\[\e[32m\]\u@\h\[\e[m\]:\[\e[34m\]\w\[\e[m\]\n\\$ "
 source /usr/share/fzf/key-bindings.bash
 source /usr/share/fzf/completion.bash
 bind -x '"\ef": "fzf-file-widget"'
-bind "$(bind -s | grep history | sed 's/\\C-r/\\ed/')"
-bind -r "\C-r"
+bind -x '"\ed": "__fzf_history__"'
 
-# for tmux
-export TERM=screen-256color

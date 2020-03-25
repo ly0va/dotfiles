@@ -12,23 +12,61 @@ if has("nvim")
     Plug 'michaeljsmith/vim-indent-object'
     Plug 'kana/vim-textobj-user'
     Plug 'kana/vim-textobj-entire'
-    Plug 'Valloric/YouCompleteMe'
+    " Plug 'Valloric/YouCompleteMe'
     Plug 'sakhnik/nvim-gdb', { 'do': ':!./install.sh \| UpdateRemotePlugins' }
-    " Plug 'jceb/vim-orgmode'
     Plug 'sheerun/vim-polyglot'
     Plug 'skywind3000/asyncrun.vim'
-    " Plug 'pedsm/sprint'
+    Plug 'simnalamburt/vim-mundo'
+    Plug 'preservim/nerdtree'
+    Plug 'mhinz/vim-startify'
+    " Plug 'jiangmiao/auto-pairs'
+    Plug 'tpope/vim-endwise'
+    Plug 'rstacruz/vim-closer'
+    Plug 'junegunn/goyo.vim'
+    Plug 'tpope/vim-eunuch'
+    Plug 'lyova-potyomkin/cfparser.vim'
+    Plug 'neoclide/coc.nvim', {'branch': 'release'}
+    Plug 'dracula/vim'
+    Plug 'ryanoasis/vim-devicons'
     call plug#end()
 endif
 
-" colorscheme for my status bar
-let g:lightline = { 'colorscheme': 'one', }
+" codeforces settings
+let g:cf_locale = "ru"
+
+" startup screen
+autocmd User Startified setlocal buftype=nofile
+let g:startify_custom_header = []
+let g:startify_update_oldfiles = 1
+let g:startify_change_to_vcs_root = 1
+let g:startify_files_number = 7
+let g:startify_bookmarks = [ {'rc': '~/.vimrc'}, {'rgr': '~/.config/ranger/rc.conf'} ]
+let g:startify_commands = [ 
+   \ {'py': 'e empty.py'},
+   \ {'c': 'e empty.c'}, 
+   \ {'cpp': 'e empty.cpp'},
+   \ {'cxx': 'e empty.cxx'},
+   \ {'T' : ['terminal', 'execute "terminal" | setlocal number! | normal i']}
+\ ]
+
+" colorscheme setting
+syntax on
+set termguicolors
+colo dracula
+source ~/.config/nvim/lightline-init.vim
+
+" close vim if only nerdtree is left
+autocmd BufEnter * if (winnr("$") == 1 && exists("b:NERDTree") && b:NERDTree.isTabTree()) | q | endif
+let g:NERDTreeDirArrowExpandable = ''
+let g:NERDTreeDirArrowCollapsible = ''
 
 " configs for YCM plugin
-let g:ycm_global_ycm_extra_conf = '~/.config/.ycm_extra_conf.py'
-let g:ycm_confirm_extra_conf = 0
-let g:ycm_enable_diagnostic_highlighting = 0
-let g:ycm_autoclose_preview_window_after_completion = 1
+" let g:ycm_global_ycm_extra_conf = '~/.config/.ycm_extra_conf.py'
+" let g:ycm_confirm_extra_conf = 0
+" let g:ycm_enable_diagnostic_highlighting = 0
+" let g:ycm_autoclose_preview_window_after_completion = 1
+" coc configs
+source ~/.config/nvim/coc-init.vim
 
 set nocompatible             " disable vi compatibility
 set nowrap                   " don't wrap my lines
@@ -45,9 +83,12 @@ set splitbelow splitright    " sane settings for where the new pane goes
 set showmatch                " highlight matching brackets
 set noswapfile               " don't create .swp files
 set undofile                 " remember undo tree between sessions
+set undolevels=100000        " remember a LOT of undos    
 set scrolloff=2              " leave at least 2 lines above & below cursor
 let loaded_matchparen = 1
-syntax on                    " highlight syntax
+
+" so that I don't have to switch layouts in normal mode
+set langmap=ФИСВУАПРШОЛДЬТЩЗЙКЫЕГМЦЧНЯ;ABCDEFGHIJKLMNOPQRSTUVWXYZ,фисвуапршолдьтщзйкыегмцчня;abcdefghijklmnopqrstuvwxyz
 
 " indentation
 filetype plugin indent on
@@ -61,7 +102,7 @@ set smartindent
 nnoremap U <c-r>
 nnoremap cc "_cc
 noremap ;  :
-noremap gn :tabnew<cr>
+noremap gn :tabnew<cr>:Startify<cr>
 noremap S  :%s//g<left><left>
 noremap <backspace> "_
 noremap <down> g<down>
@@ -84,9 +125,9 @@ inoremap <c-s> <c-o>:w<cr>
 vnoremap <c-s> <c-c>:w<cr>
 
 " split panes
-hi VertSplit cterm=NONE
-nnoremap \|       :vnew<cr>
-nnoremap <bslash> :new<cr>
+hi VertSplit cterm=NONE gui=NONE
+nnoremap <silent> \|       :vnew<cr>:Startify<cr>
+nnoremap <silent> <bslash> :new<cr>:Startify<cr>
 noremap  <m-w>    <C-W>
 
 " smart resizing
@@ -112,13 +153,17 @@ nnoremap <s-tab> <<
 noremap <leader>f :FZF<cr>
 noremap <leader>t :terminal<cr>:setlocal number!<cr>i
 noremap <leader>s :!
+noremap <leader>m :MundoToggle<cr>
+noremap <leader>n :NERDTreeToggle<cr>
+noremap <silent> <leader>g :Goyo<cr>:hi VertSplit cterm=NONE gui=NONE<cr>
+noremap <leader>rp :AsyncRun -save=1 -mode=term -rows=5 python %<cr>
+noremap <leader>rr :AsyncRun -save=1 -mode=term -rows=5 cargo run<cr>
+noremap <leader>rc :AsyncRun -save=1 -mode=term -rows=5 make %< && ./%<<cr>
+noremap <leader>ra :AsyncRun -save=1 -mode=term -rows=5 
 
 " compile and run things
 map <F5> :AsyncRun -save=1 -mode=term -rows=5 ./%<cr>
 map <F9> :AsyncRun -save=1 -mode=term -rows=5 make %< && ./%<<cr>
-
-" autocomplete braces
-inoremap {<cr> {<cr>}<esc>ko
 
 " terminal mode
 tnoremap <esc> <c-\><c-n>
@@ -131,11 +176,13 @@ autocmd BufWritePost ~/.config/nvim/init.vim source %
 autocmd BufWritePost ~/.vimrc source %
 
 " template files
-autocmd BufNewFile *.c   0r ~/.config/nvim/templates/empty.c
-autocmd BufNewFile *.cpp 0r ~/.config/nvim/templates/empty.cpp
-autocmd BufNewFile *.py  0r ~/.config/nvim/templates/empty.py
-autocmd BufNewFile *.sh  0r ~/.config/nvim/templates/empty.sh
+autocmd BufNewFile *.c      0r ~/.config/nvim/templates/empty.c
+autocmd BufNewFile *.cpp    0r ~/.config/nvim/templates/empty.cpp
+autocmd BufNewFile *.cxx    0r ~/.config/nvim/templates/empty.cxx
+autocmd BufNewFile *.py     0r ~/.config/nvim/templates/empty.py
+autocmd BufNewFile *.sh     0r ~/.config/nvim/templates/empty.sh
 
 " make scripts executable
 autocmd BufWritePost *.py silent !chmod u+x %
 autocmd BufWritePost *.sh silent !chmod u+x %
+
