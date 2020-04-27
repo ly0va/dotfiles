@@ -1,24 +1,24 @@
 # vim:ft=cfg
 [corona-total]
-command=corona | awk '/Worldwide/ {print $4}'
+command=corona.py total
 interval=600
 label= 
 color=#ffff77
 
-[corona-cured]
-command=corona | awk '/Worldwide/ {print $12}'
+[corona-recovered]
+command=corona.py recovered
 interval=600
 label= 
 color=#66ff66
 
 [corona-deaths]
-command=corona | awk '/Worldwide/ {print $8}'
+command=corona.py deaths
 interval=600
 label=ﮊ 
 color=#ff2a2a
 
 [corona-home]
-command=corona | awk '/Ukraine/ {print $5}'
+command=corona.py ukraine
 interval=600
 label=ﴥ 
 color=#7777ff
@@ -81,4 +81,6 @@ label=
 command=volume-block
 interval=once
 signal=2
+min_width=50
+align=center
 

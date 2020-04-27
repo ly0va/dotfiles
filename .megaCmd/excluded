@@ -5,3 +5,6 @@ package-lock.json
 node_modules
 __pycache__
 ~*
+target
+processing/libraries
+processing/modes

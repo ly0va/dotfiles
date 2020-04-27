@@ -12,12 +12,11 @@ alias torrent='transmission-cli'
 alias pacs='sudo pacman -S'
 alias pacr='sudo pacman -Rns'
 alias gdb='gdb -q'
-alias rgr='ranger'
-alias r='ranger'
+alias ranger='. ranger'
+alias rgr='. ranger'
+alias r='. ranger'
 alias ipython='python3 -m IPython --no-banner'
 alias ipython2='python2 -m IPython --no-banner'
-alias pinctf32='~/gits/PinCTF/pinCTF.py -l ~/gits/PinCTF/obj-ia32'
-alias pinctf64='~/gits/PinCTF/pinCTF.py -l ~/gits/PinCTF/obj-intel64'
 alias ino='arduino-cli'
 
 py() {
@@ -49,6 +48,10 @@ shopt -s checkwinsize
 shopt -s globstar
 # no need to type cd to change directory
 shopt -s autocd
+# Correct spelling errors during tab-completion
+shopt -s dirspell
+# Correct spelling errors in arguments supplied to cd
+shopt -s cdspell
 # disable Ctrl-S / Ctrl-Q that freeze / unfreeze the terminal
 stty -ixon
 
@@ -60,4 +63,7 @@ source /usr/share/fzf/key-bindings.bash
 source /usr/share/fzf/completion.bash
 bind -x '"\ef": "fzf-file-widget"'
 bind -x '"\ed": "__fzf_history__"'
+
+# z
+[[ -r "/usr/share/z/z.sh" ]] && source /usr/share/z/z.sh
 

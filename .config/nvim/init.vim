@@ -12,22 +12,23 @@ if has("nvim")
     Plug 'michaeljsmith/vim-indent-object'
     Plug 'kana/vim-textobj-user'
     Plug 'kana/vim-textobj-entire'
-    " Plug 'Valloric/YouCompleteMe'
     Plug 'sakhnik/nvim-gdb', { 'do': ':!./install.sh \| UpdateRemotePlugins' }
     Plug 'sheerun/vim-polyglot'
     Plug 'skywind3000/asyncrun.vim'
     Plug 'simnalamburt/vim-mundo'
     Plug 'preservim/nerdtree'
     Plug 'mhinz/vim-startify'
-    " Plug 'jiangmiao/auto-pairs'
+    Plug 'jceb/vim-orgmode'
     Plug 'tpope/vim-endwise'
-    Plug 'rstacruz/vim-closer'
+    " Plug 'rstacruz/vim-closer'
     Plug 'junegunn/goyo.vim'
     Plug 'tpope/vim-eunuch'
     Plug 'lyova-potyomkin/cfparser.vim'
     Plug 'neoclide/coc.nvim', {'branch': 'release'}
     Plug 'dracula/vim'
     Plug 'ryanoasis/vim-devicons'
+    Plug 'ap/vim-css-color'
+    " Plug 'dense-analysis/ale'
     call plug#end()
 endif
 
@@ -53,6 +54,7 @@ let g:startify_commands = [
 syntax on
 set termguicolors
 colo dracula
+hi! normal guibg=NONE
 source ~/.config/nvim/lightline-init.vim
 
 " close vim if only nerdtree is left
@@ -110,6 +112,7 @@ noremap <up> g<up>
 noremap j gj
 noremap k gk
 noremap Y y$
+noremap Q <nop>
 
 " swapping lines
 nnoremap <c-down> :m .+1<CR>==
@@ -123,6 +126,9 @@ vnoremap <c-up>   :m '<-2<CR>gv=gv
 nnoremap <c-s> :w<cr>
 inoremap <c-s> <c-o>:w<cr>
 vnoremap <c-s> <c-c>:w<cr>
+
+" autoclosing {, because none of the plugins work for me
+inoremap {<cr> {<cr>}<esc>O
 
 " split panes
 hi VertSplit cterm=NONE gui=NONE

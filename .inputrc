@@ -1,5 +1,7 @@
 TAB: menu-complete
 set colored-stats on
 set show-all-if-ambiguous on
-set completion-ignore-case
+set completion-ignore-case on
+set completion-map-case on
+set mark-symlinked-directories on
 

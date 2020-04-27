@@ -9,37 +9,49 @@ scrollback_lines = 10000
 cursor_blink = off
 
 [colors]
-# If unset, will reverse foreground and background
-highlight = #2f2f2f
+# Dracula theme for termite
+# https://github.com/dracula/termite
+# Copyright 2013-present, All rights reserved
+# Code licensed under the MIT license
+# special
+foreground      = #f8f8f2
+foreground_bold = #f8f8f2
+# cursor          = #f8f8f2
+background      = rgba(40, 42, 54, 0.85)
 
-# setting colors
-foreground = #ababab
-background = rgba(0, 0, 0, 0.85)
-cursorColor = #ababab
 # black
-color0 = #000000
-color8 = #343434
+color0  = #000000
+color8  = #4d4d4d
+
 # red
-color1 = #e92f2f
-color9 = #e92f2f
+color1  = #ff5555
+color9  = #ff6e67
+
 # green
-color2 = #0ed839
-color10 = #0ed839
+color2  = #50fa7b
+color10 = #5af78e
+
 # yellow
-color3 = #dddd13
-color11 = #dddd13
+color3  = #f1fa8c
+color11 = #f4f99d
+
 # blue
-color4 = #3b48e3
-color12 = #3b48e3
+color4  = #bd93f9
+color12 = #caa9fa
+
 # magenta
-color5 = #f996e2
-color13 = #f996e2
+color5  = #ff79c6
+color13 = #ff92d0
+
 # cyan
-color6 = #23edda
-color14 = #23edda
+color6  = #8be9fd
+color14 = #9aedfe
+
 # white
-color7 = #ababab
-color15 = #f9f9f9
+color7  = #bfbfbf
+color15 = #e6e6e6
+# If unset, will reverse foreground and background
+# highlight = #2f2f2f
 
 [hints]
 

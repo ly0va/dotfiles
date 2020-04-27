@@ -100,7 +100,7 @@ bindsym $mod+6 workspace $ws6
 bindsym $mod+7 workspace $ws7
 bindsym $mod+8 workspace $ws8
 bindsym $mod+9 workspace $ws9
-bindsym $mod+x exec --no-startup-id "i3-msg -t get_tree | grep SCRATCHPAD || $TERMINAL --class SCRATCHPAD; i3-msg 'scratchpad show'"
+bindsym $mod+x exec --no-startup-id "i3-msg -t get_tree | grep SCRATCHPAD || $TERMINAL --class=SCRATCHPAD -e tmux-start; i3-msg 'scratchpad show'"
 bindsym $mod+0 scratchpad show
 
 # move focused container to workspace
@@ -188,6 +188,14 @@ bar {
     }
 }
 
+# Window colors (dracula)
+# class                 border  bground text    indicator child_border
+client.focused          #7777DD #7777DD #F8F8F2 #7777DD   #7777DD
+client.focused_inactive #44475A #44475A #F8F8F2 #44475A   #44475A
+client.unfocused        #282A36 #282A36 #BFBFBF #282A36   #282A36
+client.urgent           #44475A #FF5555 #F8F8F2 #FF5555   #FF5555
+client.placeholder      #282A36 #282A36 #F8F8F2 #282A36   #282A36
+
 # take a screenshot, save it to ~/pics and copy it to clipboard
 # bindsym Print exec --no-startup-id scrot -z ~/pics/scrot/$(date +%s).png -e 'xclip -sel clip -t image/png < $f' && notify-send "Screenshot taken"
 bindsym Print exec --no-startup-id flameshot gui
@@ -205,7 +213,7 @@ bindsym XF86MonBrightnessUp   exec --no-startup-id xbacklight +10 && pkill -SIGR
 bindsym XF86MonBrightnessDown exec --no-startup-id xbacklight -10 && pkill -SIGRTMIN+3 i3blocks
 
 # get rid of the title bar
-default_border pixel 2
+default_border pixel 1
 
 # set the gaps
 gaps inner 10

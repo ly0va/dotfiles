@@ -2,6 +2,7 @@ set hidden
 set nobackup nowritebackup
 set updatetime=300
 set shortmess+=c
+set signcolumn=yes
 
 inoremap <silent><expr> <TAB>
       \ pumvisible() ? "\<C-n>" :

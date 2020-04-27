@@ -4,15 +4,14 @@
 export EDITOR=nvim
 export PAGER=less
 export BROWSER=firefox
-export TERMINAL=kitty
+export TERMINAL=termite
 
 # adding my scripts folder to PATH
 export PATH="$PATH:$HOME/bin:$HOME/bin/blocks:$HOME/go/bin"
-export PATH="$HOME/.cargo/bin:$PATH"
 
 # some configs for bat and fzf
 export BAT_THEME="ansi-dark"
-export BAT_STYLE="numbers,changes"
+export BAT_STYLE="changes"
 export FZF_DEFAULT_COMMAND="fzf-rg.sh"
 export FZF_CTRL_T_COMMAND="$FZF_DEFAULT_COMMAND"
 export FZF_ALT_C_COMMAND="fzf-fd.sh"
