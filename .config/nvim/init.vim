@@ -8,7 +8,7 @@ if has("nvim")
     Plug 'tpope/vim-surround'
     Plug 'airblade/vim-gitgutter'
     Plug 'terryma/vim-multiple-cursors'
-    Plug 'tpope/vim-commentary'
+    Plug 'tomtom/tcomment_vim'
     Plug 'michaeljsmith/vim-indent-object'
     Plug 'kana/vim-textobj-user'
     Plug 'kana/vim-textobj-entire'
@@ -16,11 +16,10 @@ if has("nvim")
     Plug 'sheerun/vim-polyglot'
     Plug 'skywind3000/asyncrun.vim'
     Plug 'simnalamburt/vim-mundo'
-    Plug 'preservim/nerdtree'
+    " Plug 'preservim/nerdtree'
     Plug 'mhinz/vim-startify'
     Plug 'jceb/vim-orgmode'
     Plug 'tpope/vim-endwise'
-    " Plug 'rstacruz/vim-closer'
     Plug 'junegunn/goyo.vim'
     Plug 'tpope/vim-eunuch'
     Plug 'lyova-potyomkin/cfparser.vim'
@@ -28,7 +27,6 @@ if has("nvim")
     Plug 'dracula/vim'
     Plug 'ryanoasis/vim-devicons'
     Plug 'ap/vim-css-color'
-    " Plug 'dense-analysis/ale'
     call plug#end()
 endif
 
@@ -58,9 +56,9 @@ hi! normal guibg=NONE
 source ~/.config/nvim/lightline-init.vim
 
 " close vim if only nerdtree is left
-autocmd BufEnter * if (winnr("$") == 1 && exists("b:NERDTree") && b:NERDTree.isTabTree()) | q | endif
-let g:NERDTreeDirArrowExpandable = ''
-let g:NERDTreeDirArrowCollapsible = ''
+" autocmd BufEnter * if (winnr("$") == 1 && exists("b:NERDTree") && b:NERDTree.isTabTree()) | q | endif
+" let g:NERDTreeDirArrowExpandable = ''
+" let g:NERDTreeDirArrowCollapsible = ''
 
 " configs for YCM plugin
 " let g:ycm_global_ycm_extra_conf = '~/.config/.ycm_extra_conf.py'
@@ -113,6 +111,7 @@ noremap j gj
 noremap k gk
 noremap Y y$
 noremap Q <nop>
+cmap w!! w !sudo tee %
 
 " swapping lines
 nnoremap <c-down> :m .+1<CR>==
@@ -160,7 +159,8 @@ noremap <leader>f :FZF<cr>
 noremap <leader>t :terminal<cr>:setlocal number!<cr>i
 noremap <leader>s :!
 noremap <leader>m :MundoToggle<cr>
-noremap <leader>n :NERDTreeToggle<cr>
+" noremap <leader>n :NERDTreeToggle<cr>
+nmap <leader>n :CocCommand explorer --toggle<CR>
 noremap <silent> <leader>g :Goyo<cr>:hi VertSplit cterm=NONE gui=NONE<cr>
 noremap <leader>rp :AsyncRun -save=1 -mode=term -rows=5 python %<cr>
 noremap <leader>rr :AsyncRun -save=1 -mode=term -rows=5 cargo run<cr>

@@ -64,6 +64,3 @@ source /usr/share/fzf/completion.bash
 bind -x '"\ef": "fzf-file-widget"'
 bind -x '"\ed": "__fzf_history__"'
 
-# z
-[[ -r "/usr/share/z/z.sh" ]] && source /usr/share/z/z.sh
-

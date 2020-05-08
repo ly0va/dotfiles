@@ -2,6 +2,8 @@
 
 # load Xresources
 xrdb ~/.Xresources
+# set keyboard delay and repeat rate
+xset r rate 200 36
 # keyboard settings: US & RU layouts; map CapsLock to Escape
 setxkbmap -layout us,ru -option caps:escape
 # start my compositor
