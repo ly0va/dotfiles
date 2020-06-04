@@ -1,6 +1,6 @@
 {
     "coc.preferences.rootPatterns": [".git", "package.json", "Cargo.toml"],
-    "coc.preferences.formatOnSaveFiletypes": ["cpp", "python", "json", "markdown"],
+    "coc.preferences.formatOnSaveFiletypes": ["json", "markdown", "html", "css"],
     "diagnostic.warningSign": ">>",
     "diagnostic.refreshOnInsertMode": true,
     "signature.enable": false,

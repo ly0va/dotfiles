@@ -14,7 +14,8 @@ bindsym $mod+q kill
 bindsym $mod+Shift+q [class=".*"] kill
 
 # start dmenu (a program launcher)
-bindsym $mod+d exec --no-startup-id i3-dmenu-desktop --dmenu='dmenu -i -fn "UbuntuMono Nerd Font:pixelsize=18"'
+bindsym $mod+d exec --no-startup-id kb-layout set 0 && pkill -SIGRTMIN+1 i3blocks && rofi -modi drun -show drun -display-drun '$ '
+# i3-dmenu-desktop --dmenu='dmenu -i -fn "UbuntuMono Nerd Font:pixelsize=18"'
 
 # change focus
 bindsym $mod+h focus left
@@ -230,6 +231,6 @@ for_window [class="^SCRATCHPAD$"] move scratchpad, resize set 876 546
 # for_window [class="phys-helper"] fullscreen toggle
 
 # mount & unmount drives
-bindsym $mod+m exec --no-startup-id sudo dmount
-bindsym $mod+Shift+m exec --no-startup-id sudo dumount
+bindsym $mod+m exec --no-startup-id dmount
+bindsym $mod+Shift+m exec --no-startup-id dumount
 

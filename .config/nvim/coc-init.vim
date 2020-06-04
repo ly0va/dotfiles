@@ -1,8 +1,13 @@
+" some plugins may not work if next line is commented out
+" set nobackup nowritebackup
 set hidden
-set nobackup nowritebackup
 set updatetime=300
 set shortmess+=c
 set signcolumn=yes
+
+let g:coc_snippet_next = '<tab>'
+let g:coc_snippet_prev = '<s-tab>'
+imap <m-o> <c-y>
 
 inoremap <silent><expr> <TAB>
       \ pumvisible() ? "\<C-n>" :
@@ -28,9 +33,3 @@ endfunction
 " Highlight the symbol and its references when holding the cursor.
 autocmd CursorHold * silent call CocActionAsync('highlight')
 
-" Symbol renaming.
-nmap <leader>rn <Plug>(coc-rename)
-
-" Formatting selected code.
-xmap <leader>/  <Plug>(coc-format-selected)
-nmap <leader>/  <Plug>(coc-format-selected)

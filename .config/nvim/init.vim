@@ -4,34 +4,44 @@ let mapleader = " "
 " plugins go here
 if has("nvim")
     call plug#begin('~/.local/share/nvim/plugged')
+    " ui
     Plug 'itchyny/lightline.vim'
-    Plug 'tpope/vim-surround'
+    Plug 'sheerun/vim-polyglot'
     Plug 'airblade/vim-gitgutter'
+    Plug 'dracula/vim'
+    Plug 'ryanoasis/vim-devicons'
+    Plug 'ap/vim-css-color'
+    " editing
+    Plug 'tpope/vim-surround'
     Plug 'terryma/vim-multiple-cursors'
     Plug 'tomtom/tcomment_vim'
     Plug 'michaeljsmith/vim-indent-object'
     Plug 'kana/vim-textobj-user'
     Plug 'kana/vim-textobj-entire'
-    Plug 'sakhnik/nvim-gdb', { 'do': ':!./install.sh \| UpdateRemotePlugins' }
-    Plug 'sheerun/vim-polyglot'
-    Plug 'skywind3000/asyncrun.vim'
-    Plug 'simnalamburt/vim-mundo'
-    " Plug 'preservim/nerdtree'
-    Plug 'mhinz/vim-startify'
     Plug 'jceb/vim-orgmode'
-    Plug 'tpope/vim-endwise'
-    Plug 'junegunn/goyo.vim'
+    " functionality
+    Plug 'skywind3000/asyncrun.vim'
+    Plug 'skywind3000/asynctasks.vim'
     Plug 'tpope/vim-eunuch'
+    Plug 'junegunn/fzf.vim'
     Plug 'lyova-potyomkin/cfparser.vim'
+    " tool bars, tabs & splits
+    Plug 'simnalamburt/vim-mundo'
+    Plug 'majutsushi/tagbar'
+    Plug 'mhinz/vim-startify'
+    " completion
+    Plug 'tpope/vim-endwise'
     Plug 'neoclide/coc.nvim', {'branch': 'release'}
-    Plug 'dracula/vim'
-    Plug 'ryanoasis/vim-devicons'
-    Plug 'ap/vim-css-color'
     call plug#end()
 endif
 
 " codeforces settings
 let g:cf_locale = "ru"
+
+" ---
+let g:asyncrun_open = 6
+let g:asynctasks_term_pos = 'bottom'
+let g:asyncrun_rootmarks = ['.git', '.project', 'Cargo.toml', 'package.json']
 
 " startup screen
 autocmd User Startified setlocal buftype=nofile
@@ -55,16 +65,6 @@ colo dracula
 hi! normal guibg=NONE
 source ~/.config/nvim/lightline-init.vim
 
-" close vim if only nerdtree is left
-" autocmd BufEnter * if (winnr("$") == 1 && exists("b:NERDTree") && b:NERDTree.isTabTree()) | q | endif
-" let g:NERDTreeDirArrowExpandable = ''
-" let g:NERDTreeDirArrowCollapsible = ''
-
-" configs for YCM plugin
-" let g:ycm_global_ycm_extra_conf = '~/.config/.ycm_extra_conf.py'
-" let g:ycm_confirm_extra_conf = 0
-" let g:ycm_enable_diagnostic_highlighting = 0
-" let g:ycm_autoclose_preview_window_after_completion = 1
 " coc configs
 source ~/.config/nvim/coc-init.vim
 
@@ -86,6 +86,10 @@ set undofile                 " remember undo tree between sessions
 set undolevels=100000        " remember a LOT of undos    
 set scrolloff=2              " leave at least 2 lines above & below cursor
 let loaded_matchparen = 1
+" BACKUPS
+set backup writebackup
+set backupdir=/home/redboot/.local/share/nvim/backup
+set backupcopy=yes
 
 " so that I don't have to switch layouts in normal mode
 set langmap=ФИСВУАПРШОЛДЬТЩЗЙКЫЕГМЦЧНЯ;ABCDEFGHIJKLMNOPQRSTUVWXYZ,фисвуапршолдьтщзйкыегмцчня;abcdefghijklmnopqrstuvwxyz
@@ -112,6 +116,7 @@ noremap k gk
 noremap Y y$
 noremap Q <nop>
 cmap w!! w !sudo tee %
+nnoremap <c-[> <c-t>
 
 " swapping lines
 nnoremap <c-down> :m .+1<CR>==
@@ -126,8 +131,10 @@ nnoremap <c-s> :w<cr>
 inoremap <c-s> <c-o>:w<cr>
 vnoremap <c-s> <c-c>:w<cr>
 
-" autoclosing {, because none of the plugins work for me
+" autoclosing brackets, because none of the plugins work for me
 inoremap {<cr> {<cr>}<esc>O
+inoremap (<cr> (<cr>)<esc>O
+inoremap [<cr> [<cr>]<esc>O
 
 " split panes
 hi VertSplit cterm=NONE gui=NONE
@@ -155,21 +162,19 @@ nnoremap <tab> >>
 nnoremap <s-tab> <<
 
 " leader utilization
-noremap <leader>f :FZF<cr>
-noremap <leader>t :terminal<cr>:setlocal number!<cr>i
-noremap <leader>s :!
+noremap <leader>ff :FZF<cr>
+noremap <leader><leader> :Tags<cr>
+noremap <leader>T :terminal<cr>:setlocal number!<cr>i
 noremap <leader>m :MundoToggle<cr>
-" noremap <leader>n :NERDTreeToggle<cr>
-nmap <leader>n :CocCommand explorer --toggle<CR>
-noremap <silent> <leader>g :Goyo<cr>:hi VertSplit cterm=NONE gui=NONE<cr>
-noremap <leader>rp :AsyncRun -save=1 -mode=term -rows=5 python %<cr>
-noremap <leader>rr :AsyncRun -save=1 -mode=term -rows=5 cargo run<cr>
-noremap <leader>rc :AsyncRun -save=1 -mode=term -rows=5 make %< && ./%<<cr>
-noremap <leader>ra :AsyncRun -save=1 -mode=term -rows=5 
-
-" compile and run things
-map <F5> :AsyncRun -save=1 -mode=term -rows=5 ./%<cr>
-map <F9> :AsyncRun -save=1 -mode=term -rows=5 make %< && ./%<<cr>
+noremap <leader>b :TagbarToggle<cr>
+noremap <leader>n :CocCommand explorer<CR>
+nmap <leader>sr <Plug>(coc-rename)
+xmap <leader>sf  <Plug>(coc-format-selected)
+nmap <leader>sf  <Plug>(coc-format-selected)
+nmap <leader>sh :CocCommand clangd.switchSourceHeader<cr>
+nmap <leader>t :CocList tasks<cr>
+nmap <f5> :AsyncTask file-run<cr>
+nmap <f8> :AsyncTask file-build<cr>
 
 " terminal mode
 tnoremap <esc> <c-\><c-n>
@@ -178,8 +183,6 @@ tnoremap <esc> <c-\><c-n>
 autocmd BufWritePost ~/.config/i3/config !i3-msg reload
 autocmd BufWritePost ~/.config/i3blocks/config !i3-msg restart
 autocmd BufWritePost ~/.Xresources !xrdb %
-autocmd BufWritePost ~/.config/nvim/init.vim source %
-autocmd BufWritePost ~/.vimrc source %
 
 " template files
 autocmd BufNewFile *.c      0r ~/.config/nvim/templates/empty.c

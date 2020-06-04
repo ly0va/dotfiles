@@ -5,6 +5,7 @@ export EDITOR=nvim
 export PAGER=less
 export BROWSER=firefox
 export TERMINAL=termite
+export SUDO_ASKPASS='/home/redboot/bin/sudo_askpass.sh'
 
 # adding my scripts folder to PATH
 export PATH="$PATH:$HOME/bin:$HOME/bin/blocks:$HOME/go/bin"
