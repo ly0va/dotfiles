@@ -1,6 +1,15 @@
 {
-    "coc.preferences.rootPatterns": [".git", "package.json", "Cargo.toml"],
-    "coc.preferences.formatOnSaveFiletypes": ["json", "markdown", "html", "css"],
+    "coc.preferences.rootPatterns": [
+        ".git",
+        "package.json",
+        "Cargo.toml"
+    ],
+    "coc.preferences.formatOnSaveFiletypes": [
+        "json",
+        "markdown",
+        "html",
+        "css"
+    ],
     "diagnostic.warningSign": ">>",
     "diagnostic.refreshOnInsertMode": true,
     "signature.enable": false,
@@ -8,5 +17,7 @@
     "explorer.icon.enableNerdfont": true,
     "explorer.previewAction.onHover": false,
     "python.linting.enabled": true,
-    "python.linting.pylintEnabled": true
+    "python.linting.pylintEnabled": true,
+    "rust-analyzer.checkOnSave.command": "clippy",
+    "rust.clippy_preference": "on"
 }

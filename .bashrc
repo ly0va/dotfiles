@@ -18,6 +18,7 @@ alias r='. ranger'
 alias ipython='python3 -m IPython --no-banner'
 alias ipython2='python2 -m IPython --no-banner'
 alias ino='arduino-cli'
+alias ...=../..
 
 py() {
     python2 -c "print $@"

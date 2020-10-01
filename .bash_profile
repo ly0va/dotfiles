@@ -4,11 +4,11 @@
 export EDITOR=nvim
 export PAGER=less
 export BROWSER=firefox
-export TERMINAL=termite
+export TERMINAL=alacritty
 export SUDO_ASKPASS='/home/redboot/bin/sudo_askpass.sh'
 
 # adding my scripts folder to PATH
-export PATH="$PATH:$HOME/bin:$HOME/bin/blocks:$HOME/go/bin"
+export PATH="$PATH:$HOME/bin:$HOME/bin/blocks:$HOME/.cargo/bin"
 
 # some configs for bat and fzf
 export BAT_THEME="ansi-dark"
@@ -26,6 +26,13 @@ export MANPAGER="/bin/sh -c \"col -bx | nvim -MRc 'set ft=man nolist nonu' -\""
 
 # ghidra settings
 export GHIDRA_HOME="$HOME/docs/security/ghidra"
+
+# zksync
+export ZKSYNC_HOME="$HOME/gits/matter-labs/zksync-dev"
+export PATH="$ZKSYNC_HOME/bin:$PATH"
+
+# yarn global packages
+export PATH="$HOME/.yarn/bin:$PATH"
 
 # launch X server as soon as I login
 if [[ "$(tty)" = "/dev/tty1" ]]; then

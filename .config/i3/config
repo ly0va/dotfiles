@@ -13,7 +13,7 @@ bindsym $mod+q kill
 # kill all windows
 bindsym $mod+Shift+q [class=".*"] kill
 
-# start dmenu (a program launcher)
+# start rofi (a program launcher)
 bindsym $mod+d exec --no-startup-id kb-layout set 0 && pkill -SIGRTMIN+1 i3blocks && rofi -modi drun -show drun -display-drun '$ '
 # i3-dmenu-desktop --dmenu='dmenu -i -fn "UbuntuMono Nerd Font:pixelsize=18"'
 
@@ -101,7 +101,7 @@ bindsym $mod+6 workspace $ws6
 bindsym $mod+7 workspace $ws7
 bindsym $mod+8 workspace $ws8
 bindsym $mod+9 workspace $ws9
-bindsym $mod+x exec --no-startup-id "i3-msg -t get_tree | grep SCRATCHPAD || $TERMINAL --class=SCRATCHPAD -e tmux-start; i3-msg 'scratchpad show'"
+bindsym $mod+x exec --no-startup-id "i3-msg -t get_tree | grep SCRATCHPAD || $TERMINAL --class Alacritty,SCRATCHPAD -e tmux-start"; scratchpad show
 bindsym $mod+0 scratchpad show
 
 # move focused container to workspace
@@ -225,10 +225,7 @@ smart_borders on
 exec --no-startup-id startup
 
 # run scratchpad terminal with tmux
-for_window [class="^SCRATCHPAD$"] move scratchpad, resize set 876 546
-
-# temporary: for MAN development
-# for_window [class="phys-helper"] fullscreen toggle
+for_window [class="^SCRATCHPAD$"] move scratchpad, resize set 871 548
 
 # mount & unmount drives
 bindsym $mod+m exec --no-startup-id dmount

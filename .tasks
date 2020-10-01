@@ -58,6 +58,6 @@ output=terminal
 # [compile-commands]
 
 [ctags]
-command=ctags -R -f tags --languages=C,C++,Rust,Python,Go,Java,JavaScript,Sh .
+command=ctags -R -f tags --exclude=target --exclude=node_modules --exclude=build --exclude=dist --languages=C,C++,Rust,Python,Go,Java,JavaScript,TypeScript,Sh .
 cwd=$(VIM_ROOT)
 output=terminal

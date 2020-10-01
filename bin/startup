@@ -20,5 +20,7 @@ mega-cmd-server
 flameshot &
 # wifi applet
 nm-applet &
+# bl appet
+blueman-applet &
 
 # disown -a

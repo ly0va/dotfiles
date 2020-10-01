@@ -34,12 +34,6 @@ command=date-block
 interval=60
 label= 
 
-[keyboard]
-command=kb-layout print %s
-interval=once
-label= 
-signal=1
-
 [battery]
 command=battery-block
 interval=30
@@ -83,4 +77,9 @@ interval=once
 signal=2
 min_width=50
 align=center
+
+[background]
+command=bg-block && echo
+interval=600
+label=
 

@@ -2,7 +2,7 @@
 let mapleader = " "
 
 " plugins go here
-if has("nvim")
+" if has("nvim")
     call plug#begin('~/.local/share/nvim/plugged')
     " ui
     Plug 'itchyny/lightline.vim'
@@ -11,6 +11,7 @@ if has("nvim")
     Plug 'dracula/vim'
     Plug 'ryanoasis/vim-devicons'
     Plug 'ap/vim-css-color'
+    Plug 'jacqueswww/vim-vyper'
     " editing
     Plug 'tpope/vim-surround'
     Plug 'terryma/vim-multiple-cursors'
@@ -20,11 +21,15 @@ if has("nvim")
     Plug 'kana/vim-textobj-entire'
     Plug 'jceb/vim-orgmode'
     " functionality
+    Plug 'airblade/vim-rooter'
     Plug 'skywind3000/asyncrun.vim'
     Plug 'skywind3000/asynctasks.vim'
     Plug 'tpope/vim-eunuch'
+    Plug 'tpope/vim-fugitive'
     Plug 'junegunn/fzf.vim'
     Plug 'lyova-potyomkin/cfparser.vim'
+    Plug 'thinca/vim-localrc'
+    Plug 'xuhdev/vim-latex-live-preview'
     " tool bars, tabs & splits
     Plug 'simnalamburt/vim-mundo'
     Plug 'majutsushi/tagbar'
@@ -33,15 +38,20 @@ if has("nvim")
     Plug 'tpope/vim-endwise'
     Plug 'neoclide/coc.nvim', {'branch': 'release'}
     call plug#end()
-endif
+" endif
 
 " codeforces settings
 let g:cf_locale = "ru"
+
+" latex
+let g:livepreview_cursorhold_recompile = 0
+let g:livepreview_previewer = 'zathura'
 
 " ---
 let g:asyncrun_open = 6
 let g:asynctasks_term_pos = 'bottom'
 let g:asyncrun_rootmarks = ['.git', '.project', 'Cargo.toml', 'package.json']
+let g:rooter_patterns = g:asyncrun_rootmarks
 
 " startup screen
 autocmd User Startified setlocal buftype=nofile
@@ -62,7 +72,9 @@ let g:startify_commands = [
 syntax on
 set termguicolors
 colo dracula
-hi! normal guibg=NONE
+if has("nvim")
+    hi! normal guibg=NONE
+endif
 source ~/.config/nvim/lightline-init.vim
 
 " coc configs
@@ -173,15 +185,16 @@ xmap <leader>sf  <Plug>(coc-format-selected)
 nmap <leader>sf  <Plug>(coc-format-selected)
 nmap <leader>sh :CocCommand clangd.switchSourceHeader<cr>
 nmap <leader>t :CocList tasks<cr>
-nmap <f5> :AsyncTask file-run<cr>
+nmap <leader>r :AsyncRun -mode=terminal -strip -cols=10<space>
 nmap <f8> :AsyncTask file-build<cr>
+nmap <f9> :AsyncTask file-run<cr>
 
 " terminal mode
 tnoremap <esc> <c-\><c-n>
 
 " reload apps when configs are edited - consider switching to entr
 autocmd BufWritePost ~/.config/i3/config !i3-msg reload
-autocmd BufWritePost ~/.config/i3blocks/config !i3-msg restart
+" autocmd BufWritePost ~/.config/i3blocks/config !i3-msg restart
 autocmd BufWritePost ~/.Xresources !xrdb %
 
 " template files
